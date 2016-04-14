@@ -1,5 +1,9 @@
 package com.pillbox.po;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -8,12 +12,16 @@ import java.util.List;
  * User:  maktub
  * Date:   16/2/18 下午11:32
  */
+//@Entity
+//@Table(name = "drug_management")
 public class DrugManagement {
 
     //主键自增ID
+    @Id
     public Long id;
 
     //用户基本信息表关联
+    @OneToMany
     public User user;
 
     //药品名
