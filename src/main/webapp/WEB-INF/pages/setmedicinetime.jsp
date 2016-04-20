@@ -9,7 +9,6 @@
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/resources/css/swiper.min.css">
 
 </head>
 <body style="background-image: url('/resources/images/bg_activity.png'); margin-top: 20px">
@@ -95,7 +94,5 @@
 <script src="/resources/js/jquery.1.11.3.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/resources/js/bootstrap.min.js"></script>
-<!-- 触摸滑动插入 -->
-<script src="/resources/js/swiper.jquery.min.js"></script>
 </body>
 </html>

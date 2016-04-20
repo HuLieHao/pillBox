@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * User:  maktub
  * Date:   16/2/16 下午9:48
+ *
  */
 @Controller
 @RequestMapping("/pillBox")
 public class PillBoxController {
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
 
     @RequestMapping("/index")
@@ -34,33 +35,63 @@ public class PillBoxController {
 
     /**
      * 我的药物
-     * @param openId
-     * @return
+     * @return view page
      */
     @RequestMapping(value = "/myMedicine")
     public String myMedicine() {
 
-        return this.VIEW_MY_MEDICINE;
+        return VIEW_MY_MEDICINE;
     }
 
     /**
      * 添加服药
-     * @return
+     * @return view page
      */
     @RequestMapping(value = "/addMedicine")
     public String addMedicine() {
 
-        return this.VIEW_ADD_MEDICINE;
+        return VIEW_ADD_MEDICINE;
     }
 
     /**
      * 设置服药时间
-     * @return
+     * @return view page
      */
     @RequestMapping(value = "/setMedicineTime")
     public String setMedicineTime() {
 
-        return this.VIEW_SET_MEDICINE_TIME;
+        return VIEW_SET_MEDICINE_TIME;
+    }
+
+    @RequestMapping(value = "/medicineHistory")
+    public String medicineHistory() {
+
+        return VIEW_MEDICINE_HISTORY;
+
+    }
+
+    @RequestMapping(value = "todaymedicine")
+    public String todayMedicine() {
+
+        return VIEW_TODAY_MEDICINE;
+    }
+
+    @RequestMapping(value = "/toDiseaseSelfDiagnosis")
+    public String toDiseaseSelfDiagnosis() {
+
+        return VIEW_DISEASE_SELF_DIAGNOSIS_MAIN;
+    }
+
+    @RequestMapping(value = "/toDiseaseSelfDiagnosisRight")
+    public String toDiseaseSelfDiagnosisRight() {
+
+        return VIEW_DISEASE_SELF_DIAGNOSIS_RIGHT;
+    }
+
+    @RequestMapping(value = "/toDiseaseSelfDiagnosisLeft")
+    public String toDiseaseSelfDiagnosisLeft() {
+
+        return VIEW_DISEASE_SELF_DIAGNOSIS_RIGHT;
     }
 
 
@@ -69,4 +100,14 @@ public class PillBoxController {
     private static final String VIEW_ADD_MEDICINE = "addmedicine";
 
     private static final String VIEW_SET_MEDICINE_TIME = "setmedicinetime";
+
+    private static final String VIEW_MEDICINE_HISTORY = "medicinehistory";
+
+    private static final String VIEW_TODAY_MEDICINE = "todaymedicine";
+
+    private static final String VIEW_DISEASE_SELF_DIAGNOSIS_MAIN = "diseaseselfdiagnosis/main";
+
+    private static final String VIEW_DISEASE_SELF_DIAGNOSIS_LEFT = "diseaseselfdiagnosis/left";
+
+    private static final String VIEW_DISEASE_SELF_DIAGNOSIS_RIGHT = "diseaseselfdiagnosis/right";
 }
