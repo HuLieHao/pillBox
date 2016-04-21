@@ -35,8 +35,10 @@
       bottom:0;
       left:40%;
       overflow:auto;
-      padding-top: 20px;
       background:#FFFFFF;
+    }
+    .progress {
+      margin-bottom: 0;
     }
   </style>
 </head>
@@ -96,14 +98,6 @@
     <div class="row">
       <div class="col-md-12">
         <div class="panel-body">
-          生殖部位
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel-body">
           骨盆
         </div>
       </div>
@@ -120,14 +114,6 @@
     <div class="row">
       <div class="col-md-12">
         <div class="panel-body">
-          咽颈部
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel-body">
           腰背部
         </div>
       </div>
@@ -136,7 +122,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="panel-body">
-          臀部及肛门
+          臀部
         </div>
       </div>
     </div>
@@ -144,56 +130,471 @@
   </div>
 
   <div id="main">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Collapsible Group Item #1
-            </a>
-          </h4>
+
+    <!-- 全身症状 开始 -->
+    <div class="list-group" id="list_0">
+      <a href="#list_0_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        吃得太多
+      </a>
+        <div class="collapse" id="list_0_collapse_1">
+          <ul class="list-group">
+            <li class="list-group-item">多食症
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 21.8%;">
+                  21.8%
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">心境障碍
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 18.4%;">
+                  18.4%
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">饮食障碍
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 11.5%;">
+                  11.5%
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">焦虑症
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 4.6%;">
+                  4.6%
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingTwo">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Collapsible Group Item #2
-            </a>
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingThree">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Collapsible Group Item #3
-            </a>
-          </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
     </div>
+    <!-- 全身症状 结束 -->
+
+    <!-- 皮肤症状 开始 -->
+    <div class="list-group" id="list_1" style="display: none">
+      <a href="#list_1_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        扁平湿疣
+      </a>
+      <div class="collapse" id="list_1_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">黑素细胞痣
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 4.5%;">
+                4.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">痤疮
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 4.5%;">
+                4.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">跖疣
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 1.8%;">
+                1.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">传染性软疣
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 1.4%;">
+                1.4%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 皮肤症状 结束 -->
+
+    <!-- 头部 开始 -->
+    <div class="list-group" id="list_2" style="display: none">
+      <a href="#list_2_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        头晕目眩
+      </a>
+      <div class="collapse" id="list_2_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">焦虑症
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.5%;">
+                5.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">偏头痛
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 4.1%;">
+                4.1%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">原发性高血压
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 3.5%;">
+                3.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 3.0%;">
+                3.0%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 头部 结束 -->
+
+    <!-- 咽颈部 开始 -->
+    <div class="list-group" id="list_3" style="display: none">
+      <a href="#list_3_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        喉咙痛
+      </a>
+      <div class="collapse" id="list_3_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 咽颈部 结束 -->
+
+    <!-- 胸部 开始 -->
+    <div class="list-group" id="list_4" style="display: none">
+      <a href="#list_4_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        侧胸部疼痛
+      </a>
+      <div class="collapse" id="list_4_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 胸部 结束 -->
+
+    <!-- 腹部 开始 -->
+    <div class="list-group" id="list_5" style="display: none">
+      <a href="#list_5_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        大便困难
+      </a>
+      <div class="collapse" id="list_5_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 腹部 结束 -->
+
+    <!-- 骨盆 开始 -->
+    <div class="list-group" id="list_6" style="display: none">
+      <a href="#list_6_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        憋不住尿
+      </a>
+      <div class="collapse" id="list_6_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 骨盆 结束 -->
+
+    <!-- 四肢 开始 -->
+    <div class="list-group" id="list_7" style="display: none">
+      <a href="#list_7_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        手和手指疼痛(不适)
+      </a>
+      <div class="collapse" id="list_7_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 四肢 结束 -->
+
+    <!-- 腰背部 开始 -->
+    <div class="list-group" id="list_8" style="display: none">
+      <a href="#list_8_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        背部(不适)
+      </a>
+      <div class="collapse" id="list_8_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 腰背部 结束 -->
+
+    <!-- 臀部 开始 -->
+    <div class="list-group" id="list_9" style="display: none">
+      <a href="#list_9_collapse_1" class="list-group-item" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+        大便呈黑色
+      </a>
+      <div class="collapse" id="list_9_collapse_1">
+        <ul class="list-group">
+          <li class="list-group-item">急性咽炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 28.5%;">
+                28.5%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">链球菌性咽喉炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 7.0%;">
+                7.0%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">慢性鼻窦炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 6.8%;">
+                6.8%
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">急性扁桃腺炎
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 5.3%;">
+                5.3%
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    <!-- 臀部 结束 -->
+
   </div>
 
 </div>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="/resources/js/jquery.1.11.3.min.js"></script>
+<%--<script src="/resources/js/mixed.js"></script>--%>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+  var pre_index = 0;
+  $(".panel-body").click(function(){
+    $(".panel-body").css("background", "");
+    $(this).css("background", "#ffffff");
+
+    var index = $(".panel-body").index(this);
+    var pre_position = "list_" + pre_index;
+    var position = "list_" + index;
+
+    $("#" + position).css("display", "block");
+    $("#" + pre_position).css("display", "none");
+
+    pre_index = index;
+  });
+</script>
 </body>
 </html>
