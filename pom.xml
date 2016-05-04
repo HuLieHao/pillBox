@@ -8,7 +8,7 @@
     <name>pillBox</name>
 
     <properties>
-        <spring.version>4.1.1.RELEASE</spring.version>
+        <spring.version>4.2.4</spring.version>
         <hibernate.version>4.3.5.Final</hibernate.version>
     </properties>
 
