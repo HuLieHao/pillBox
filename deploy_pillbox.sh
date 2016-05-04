@@ -26,7 +26,7 @@ echo "生产路径: "$PRODUCE_DIR
 
 echo "#### 更新代码"
 cd $PROJECT_DIR/$PROJECT_NAME
-git pull origin box_dev
+git pull origin master
 
 echo "#### 开始拷贝项目到发布路径中"
 cd $PUBLISH_DIR
