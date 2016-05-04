@@ -16,7 +16,7 @@ TOMCAT_NAME=apache-tomcat-pillBox
 TOMCAT_HOME=$USER_HOME/product/$TOMCAT_NAME
 PROJECT_DIR=$USER_HOME/workspace
 PUBLISH_DIR=$USER_HOME/publish
-PRODUCE_DIR=/opt/box/work/resource
+PRODUCE_DIR=$USER_HOME/product/work_pillBox/resource
 COMPILED_WAR=$PROJECT_NAME.war
 COMPILED_PATH=$PUBLISH_DIR/$PROJECT_NAME/target/$COMPILED_WAR
 
@@ -48,10 +48,9 @@ if [ ! -f $COMPILED_PATH ];then
 fi
 
 cd $PUBLISH_DIR
-#rm -rf $PROJECT_NAME
 
 echo "#### 关闭tomcat"
-pro_num=`jps -v | grep tomcat | awk '{print $1}' | wc -l`
+pro_num=`jps -v | grep $TOMCAT_NAME | awk '{print $1}' | wc -l`
 echo '正在运行的('tomcat')程序数量'$pro_num
 if [ $pro_num != 0 ];then
     echo "开始杀"$TOMCAT_NAME
