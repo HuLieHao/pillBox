@@ -6,13 +6,13 @@ CURRENT_TIME=`date +%Y_%m_%d_%H_%M_%S`
 
 echo "#### 开始时间: "$CURRENT_TIME
 
-PROJECT_NAME="pillbox"
+PROJECT_NAME="pillBox"
 PROJECT_CONFIG_DIR="src/main/resources/conf"
 SELF_CONFIG_DIR="src/main/resources/conf_dev"
 IS_ROOT_PROJECT=1
 
 USER_HOME=/home/ubuntu
-TOMCAT_NAME=apache-tomcat-pillbox
+TOMCAT_NAME=apache-tomcat-pillBox
 TOMCAT_HOME=$USER_HOME/product/$TOMCAT_NAME
 PROJECT_DIR=$USER_HOME/workspace
 PUBLISH_DIR=$USER_HOME/publish
