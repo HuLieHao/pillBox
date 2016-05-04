@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-md-12">
         <div class="form-group">
-          药物名称<input type="text" class="form-control input-lg">
+          药物名称<input type="text" name="medicineName" class="form-control input-lg">
         </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        当前剩余<input type="text" class="form-control input-lg">
+        当前剩余<input type="text" name="surplus" class="form-control input-lg">
       </div>
       </div>
   </div>
@@ -35,7 +35,7 @@
     <div class="col-md-12">
       <div class="form-group">
         单位
-        <select class="form-control input-lg">
+        <select name="unit" class="form-control input-lg">
           <option>片</option>
           <option>个</option>
           <option>胶囊</option>
@@ -51,7 +51,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服用原因<input type="text" class="form-control input-lg">
+        服用原因<input type="text" name="takeResion" class="form-control input-lg">
       </div>
     </div>
   </div>
@@ -59,15 +59,29 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服用方式<input type="text" class="form-control input-lg">
+        服用方式<input type="text" name="takeWay" class="form-control input-lg">
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      <div class="form-group">
-        医生<input type="text" class="form-control input-lg">
+      <div class="form-group  has-error">
+        <label class="control-label">医生 <small>医生姓名不能为空</small></label>
+        <input type="text" name="doctor" class="form-control input-lg">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="has-error">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxError" value="option1">
+            是否补充提醒
+          </label>
+        </div>
       </div>
     </div>
   </div>

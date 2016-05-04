@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/pillBox")
 public class PillBoxController {
 
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private UserService userService;
 
 
     @RequestMapping("/index")
@@ -70,7 +70,7 @@ public class PillBoxController {
 
     }
 
-    @RequestMapping(value = "todaymedicine")
+    @RequestMapping(value = "/todaymedicine")
     public String todayMedicine() {
 
         return VIEW_TODAY_MEDICINE;
