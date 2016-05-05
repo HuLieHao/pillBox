@@ -30,6 +30,9 @@ public class WxController {
      */
     @RequestMapping(value = "/cos", method = {RequestMethod.GET, RequestMethod.POST})
     public void coreHandle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        System.out.print("微信服务器请求.......");
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         boolean isGet = request.getMethod().toLowerCase().equals("get");
@@ -62,7 +65,10 @@ public class WxController {
         try {
             sign = WxSignUtils.checkSignature(signature, timestamp, nonce);
             if (sign) {
+                System.out.println("微信服务器接入成功........");
                 response.getWriter().print(echostr);
+            }else {
+                System.out.println("微信服务器接入失败........");
             }
         } catch (Exception e) {
            e.printStackTrace();
