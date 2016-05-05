@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 @Controller
-@RequestMapping("/pillBox")
+@RequestMapping("/medicine")
 public class PillBoxController {
 
     @Autowired
