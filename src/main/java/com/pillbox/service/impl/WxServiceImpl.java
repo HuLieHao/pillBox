@@ -93,9 +93,8 @@ public class WxServiceImpl implements WxService {
 
         Article article = new Article();
         article.setTitle("欢迎使用健康管理系统");
-        article.setDescription("打开智能药箱，绑定与管理，您身边的医药助手!");
-        article.setPicUrl(WxCons.HOST + "/assets/images/weixin/coverImage.png");
-//        article.setUrl(WxCons.HOST + "/oss/wx/boxMenu?openId=" + wx_openid);
+        article.setDescription("为您提供服药提醒及健康知识、医生预约日记");
+        article.setPicUrl(WxCons.HOST + "/images/weixin/coverImage.png");
         articleList.add(article);
         // 设置图文消息个数
         newsMessage.setArticleCount(articleList.size());
