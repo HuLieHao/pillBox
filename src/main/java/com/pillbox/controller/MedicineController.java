@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/medicine")
-public class PillBoxController {
+public class MedicineController {
 
     @Autowired
     private UserService userService;
@@ -37,7 +37,7 @@ public class PillBoxController {
      * 我的药物
      * @return view page
      */
-    @RequestMapping(value = "/myMedicine")
+    @RequestMapping(value = "/toMyMedicine")
     public String myMedicine() {
 
         return VIEW_MY_MEDICINE;
@@ -47,7 +47,7 @@ public class PillBoxController {
      * 添加服药
      * @return view page
      */
-    @RequestMapping(value = "/addMedicine")
+    @RequestMapping(value = "/toAddMedicine")
     public String addMedicine() {
 
         return VIEW_ADD_MEDICINE;
@@ -63,37 +63,26 @@ public class PillBoxController {
         return VIEW_SET_MEDICINE_TIME;
     }
 
-    @RequestMapping(value = "/medicineHistory")
+    /**
+     * 历史记录
+     * @return
+     */
+    @RequestMapping(value = "/toMedicineHistory")
     public String medicineHistory() {
 
         return VIEW_MEDICINE_HISTORY;
 
     }
 
-    @RequestMapping(value = "/todaymedicine")
+    /**
+     * 当时提醒
+     * @return
+     */
+    @RequestMapping(value = "/toDayMedicine")
     public String todayMedicine() {
 
         return VIEW_TODAY_MEDICINE;
     }
-
-    @RequestMapping(value = "/toDiseaseSelfDiagnosis")
-    public String toDiseaseSelfDiagnosis() {
-
-        return VIEW_DISEASE_SELF_DIAGNOSIS_MAIN;
-    }
-
-    @RequestMapping(value = "/toDiseaseSelfDiagnosisRight")
-    public String toDiseaseSelfDiagnosisRight() {
-
-        return VIEW_DISEASE_SELF_DIAGNOSIS_RIGHT;
-    }
-
-    @RequestMapping(value = "/toDiseaseSelfDiagnosisLeft")
-    public String toDiseaseSelfDiagnosisLeft() {
-
-        return VIEW_DISEASE_SELF_DIAGNOSIS_RIGHT;
-    }
-
 
     private static final String VIEW_MY_MEDICINE = "mymedicine";
 
@@ -105,9 +94,4 @@ public class PillBoxController {
 
     private static final String VIEW_TODAY_MEDICINE = "todaymedicine";
 
-    private static final String VIEW_DISEASE_SELF_DIAGNOSIS_MAIN = "diseaseselfdiagnosis/main";
-
-    private static final String VIEW_DISEASE_SELF_DIAGNOSIS_LEFT = "diseaseselfdiagnosis/left";
-
-    private static final String VIEW_DISEASE_SELF_DIAGNOSIS_RIGHT = "diseaseselfdiagnosis/right";
 }

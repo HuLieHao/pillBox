@@ -5,6 +5,7 @@ import com.pillbox.utils.WxSignUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class WxController {
     @RequestMapping(value = "/cos", method = {RequestMethod.GET, RequestMethod.POST})
     public void coreHandle(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        System.out.print("微信服务器请求.......");
+        System.out.println("微信服务器请求.......");
 
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -51,6 +52,93 @@ public class WxController {
             }
         }
     }
+
+    /**
+     * 点击了微信菜单“药物管理时”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toMyMedicineMenu")
+    public String toMyMedicineMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/medicine/toMyMedicine";
+    }
+
+    /**
+     * 点击了微信菜单“历史记录”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toMedicineHistoryMenu")
+    public String toMedicineHistoryMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/medicine/toMedicineHistory";
+    }
+
+    /**
+     * 点击了微信菜单“当日提醒”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toTodayMedicineMenu")
+    public String toTodayMedicineMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/medicine/toDayMedicine";
+    }
+
+    /**
+     * 点击了微信菜单“疾病自诊”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toDiseaseSelfDiagnosisMenu")
+    public String toDiseaseSelfDiagnosisMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+    }
+
+    /**
+     * 点击了微信菜单“快速急救”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toRapidFirstAidMenu")
+    public String toRapidFirstAidMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+    }
+
+    /**
+     * 点击微信菜单“健康常识”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toHealthKnowledgeMenu")
+    public String toHealthKnowledgeMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+    }
+
+    /**
+     * 点击微信菜单“医生日记”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toDoctorDiaryMenu")
+    public String toDoctorDiaryMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+    }
+
+
+
 
     /**
      * 验证服务器地址

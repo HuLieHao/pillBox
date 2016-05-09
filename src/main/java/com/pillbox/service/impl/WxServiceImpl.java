@@ -92,10 +92,10 @@ public class WxServiceImpl implements WxService {
         List<Article> articleList = new ArrayList<Article>();
 
         Article article = new Article();
-        article.setTitle("首次使用药箱，请让我带您完成设置...");
-//        article.setDescription("打开智能药箱，绑定与管理，您身边的医药助手!");
+        article.setTitle("欢迎使用健康管理系统");
+        article.setDescription("打开智能药箱，绑定与管理，您身边的医药助手!");
         article.setPicUrl(WxCons.HOST + "/assets/images/weixin/coverImage.png");
-        article.setUrl(WxCons.HOST + "/oss/wx/boxMenu?openId=" + wx_openid);
+//        article.setUrl(WxCons.HOST + "/oss/wx/boxMenu?openId=" + wx_openid);
         articleList.add(article);
         // 设置图文消息个数
         newsMessage.setArticleCount(articleList.size());
