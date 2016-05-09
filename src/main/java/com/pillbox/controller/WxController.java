@@ -90,6 +90,18 @@ public class WxController {
     }
 
     /**
+     * 点击微信菜单“健康常识”
+     * @param code
+     * @param state
+     * @return
+     */
+    @RequestMapping("/toHealthKnowledgeMenu")
+    public String toHealthKnowledgeMenu(@RequestParam String code, @RequestParam String state) {
+
+        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+    }
+
+    /**
      * 点击了微信菜单“疾病自诊”
      * @param code
      * @param state
@@ -109,18 +121,6 @@ public class WxController {
      */
     @RequestMapping("/toRapidFirstAidMenu")
     public String toRapidFirstAidMenu(@RequestParam String code, @RequestParam String state) {
-
-        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
-    }
-
-    /**
-     * 点击微信菜单“健康常识”
-     * @param code
-     * @param state
-     * @return
-     */
-    @RequestMapping("/toHealthKnowledgeMenu")
-    public String toHealthKnowledgeMenu(@RequestParam String code, @RequestParam String state) {
 
         return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
     }

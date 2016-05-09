@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -8,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/pillbox_resources/css/bootstrap.min.css">
   <style type="text/css">
     .container-fluid{
       top:110px;
@@ -575,10 +574,10 @@
 
 </div>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="/resources/js/jquery.1.11.3.min.js"></script>
-<%--<script src="/resources/js/mixed.js"></script>--%>
+<script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
+<%--<script src="/pillbox_resources/js/mixed.js"></script>--%>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/pillbox_resources/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
   var pre_index = 0;
