@@ -582,17 +582,19 @@
 
   var pre_index = 0;
   $(".panel-body").click(function(){
-    $(".panel-body").css("background", "");
-    $(this).css("background", "#ffffff");
+      $(".panel-body").css("background", "");
+      $(this).css("background", "#ffffff");
 
-    var index = $(".panel-body").index(this);
-    var pre_position = "list_" + pre_index;
-    var position = "list_" + index;
+      var index = $(".panel-body").index(this);
+      if (pre_index == index) return;
 
-    $("#" + position).css("display", "block");
-    $("#" + pre_position).css("display", "none");
+      var pre_position = "list_" + pre_index;
+      var position = "list_" + index;
 
-    pre_index = index;
+      $("#" + position).css("display", "block");
+      $("#" + pre_position).css("display", "none");
+
+      pre_index = index;
   });
 </script>
 </body>
