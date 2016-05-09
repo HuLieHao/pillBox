@@ -42,7 +42,7 @@
   </style>
 </head>
 
-<body style="background-image: url('/resources/images/bg_activity.png');">
+<body style="background-image: url('/pillbox_resources/images/bg_activity.png');">
 <div class="container-fluid">
   <div id="left">
 
@@ -575,7 +575,6 @@
 </div>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
-<%--<script src="/pillbox_resources/js/mixed.js"></script>--%>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/pillbox_resources/js/bootstrap.min.js"></script>
 <script type="text/javascript">
