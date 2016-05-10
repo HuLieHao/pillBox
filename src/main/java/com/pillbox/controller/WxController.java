@@ -98,7 +98,7 @@ public class WxController {
     @RequestMapping("/toHealthKnowledgeMenu")
     public String toHealthKnowledgeMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+        return "redirect:/pillBox/health/toHealthKnowledge";
     }
 
     /**
@@ -122,7 +122,7 @@ public class WxController {
     @RequestMapping("/toRapidFirstAidMenu")
     public String toRapidFirstAidMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+        return "redirect:/pillBox/health/toRapidFirstAid";
     }
 
     /**
@@ -134,7 +134,7 @@ public class WxController {
     @RequestMapping("/toDoctorDiaryMenu")
     public String toDoctorDiaryMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+        return "redirect:/pillBox/health/toDoctorDiary";
     }
 
     /**
