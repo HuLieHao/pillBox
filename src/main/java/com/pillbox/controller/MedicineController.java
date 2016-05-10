@@ -38,7 +38,9 @@ public class MedicineController {
      * @return view page
      */
     @RequestMapping(value = "/toMyMedicine")
-    public String myMedicine() {
+    public String myMedicine(ModelMap model) {
+
+        model.addAttribute("openId", "oQRiyv9PK8asUdaJ7WX88bmpy1ns");
 
         return VIEW_MY_MEDICINE;
     }
@@ -48,8 +50,9 @@ public class MedicineController {
      * @return view page
      */
     @RequestMapping(value = "/toAddMedicine")
-    public String addMedicine() {
+    public String addMedicine(@RequestParam String openId, ModelMap model) {
 
+        model.addAttribute("openId", openId);
         return VIEW_ADD_MEDICINE;
     }
 

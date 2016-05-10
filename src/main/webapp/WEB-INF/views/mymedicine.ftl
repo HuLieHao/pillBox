@@ -85,13 +85,12 @@
     <div class="row" style="text-align: center; background: #ffffff">
         <div class="col-md-12">
             <br>
-            <button type="button" class="btn btn-info input-lg" style="width: 90%">添加药物</button>
+            <button type="button" class="btn btn-info input-lg my-medicine" style="width: 90%" open-id="${openId!""}">添加药物</button>
             <br/>&nbsp;&nbsp;
         </div>
     </div>
 
 </div>
-
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
@@ -99,6 +98,8 @@
 <script src="/pillbox_resources/js/bootstrap.min.js"></script>
 
 <script src="/pillbox_resources/js/swiper.jquery.min.js"></script>
+
+<script src="/pillbox_resources/js/mymedicine.js"></script>
 
 <!-- Initialize Swiper -->
 <script>

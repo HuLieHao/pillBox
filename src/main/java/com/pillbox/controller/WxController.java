@@ -137,9 +137,6 @@ public class WxController {
         return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
     }
 
-
-
-
     /**
      * 验证服务器地址
      */

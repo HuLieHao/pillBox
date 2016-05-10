@@ -12,7 +12,7 @@
 </head>
 <body style="background-image: url('/pillbox_resources/images/bg_activity.png'); margin-top: 20px">
 
-<div class="container-fluid">
+<div class="container-fluid" open-id="${openId!""}">
 
   <div class="row">
     <div class="col-md-12">
