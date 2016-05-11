@@ -8,6 +8,7 @@
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="/pillbox_resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/pillbox_resources/css/swiper.min.css">
+    <link rel="stylesheet" href="/pillbox_resources/css/weui.css">
 
     <style>
         .swiper-container {
@@ -64,13 +65,13 @@
             <p style="margin-bottom: 0px"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></p>
             <#list drugs as drug>
                 <div class="drug-content" <#if drug_index == 0> style="display: block;" <#else> style="display: none;" </#if>>
-                    <p>服用时间 - ${drug.gap!""}</p>
+                    <p>服用方式 - ${drug.gapStr!""}</p>
                     <p>
                         <#list drug.times_dose as times>
                             ${times.time_str!""}(${times.num!""})
                         </#list>
                     </p>
-                    <p>${drug.take_way!""} / ${drug.dose_type!""}</p>
+                    <p>${drug.take_way_str!""} / ${drug.dose_type_str!""}</p>
                     <p>开始: ${drug.intime?string("MM/dd/yy")}</p>
                 </div>
             </#list>
@@ -78,9 +79,9 @@
     </div>
     <div class="row" style="text-align: center; background: #ffffff">
         <div class="col-md-12">
-            <button type="button" class="btn btn-info" style="margin-right: 10px">&nbsp;&nbsp;&nbsp;&nbsp;详情&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button type="button" class="btn btn-info" style="margin-right: 10px">&nbsp;&nbsp;服用时间&nbsp;&nbsp;</button>
-            <button type="button" class="btn btn-info">&nbsp;&nbsp;处方补充&nbsp;&nbsp;</button>
+            <button type="button" id="detail" class="btn btn-info" style="margin-right: 10px">&nbsp;&nbsp;&nbsp;&nbsp;详情&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <button type="button" id="time" class="btn btn-info" style="margin-right: 10px">&nbsp;&nbsp;服用时间&nbsp;&nbsp;</button>
+            <button type="button" id="addPrescription" class="btn btn-info">&nbsp;&nbsp;处方补充&nbsp;&nbsp;</button>
             <br/>&nbsp;&nbsp;
         </div>
     </div>
@@ -96,6 +97,28 @@
         </div>
     </div>
 
+    <!-- loading toast -->
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+
 </div>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -106,25 +129,6 @@
 <script src="/pillbox_resources/js/swiper.jquery.min.js"></script>
 
 <script src="/pillbox_resources/js/mymedicine.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 4,
-        centeredSlides: true,
-        paginationClickable: true,
-        spaceBetween: 30,
-        grabCursor: true,
-        onSlideChangeStart: function(swiper){
-            var activeIndex = swiper.activeIndex;
-            var previousIndex = swiper.previousIndex;
-            var drug_id = $(".swiper-slide").eq(activeIndex).attr("drug-id");
-            $(".drug-content").eq(activeIndex).css("display", "block");
-            $(".drug-content").eq(previousIndex).css("display", "none");
-        }
-    });
-</script>
 
 </body>
 </html>

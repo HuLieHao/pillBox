@@ -3,6 +3,7 @@ package com.pillbox.po;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -32,11 +33,15 @@ public class DrugManagement {
     //单位
     public String unit;
 
+    public String unitStr;
+
     //服用原因
     public String take_resion;
 
     //服用方式
     public String take_way;
+
+    public String take_way_str;
 
     //医生
     public String doctor;
@@ -44,16 +49,22 @@ public class DrugManagement {
     //间隔类型 0:每日 1:一次性事件
     public String gap;
 
+    public String gapStr;
+
     //服务时间和剂量
     @OneToMany(targetEntity = TimeDose.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "drug_id", updatable = false)
-    public Set<TimeDose> times_dose = new HashSet<TimeDose>();
+    public Set<TimeDose> times_dose = new LinkedHashSet<TimeDose>();
 
     //持续时间
     public String persist;
 
+    public String persistStr;
+
     //服药说明
     public String dose_type;
+
+    public String dose_type_str;
 
     //是否补充提醒 0: 不提醒 1: 提醒
     public String add_remind;
@@ -172,5 +183,45 @@ public class DrugManagement {
 
     public void setIntime(Date intime) {
         this.intime = intime;
+    }
+
+    public String getUnitStr() {
+        return unitStr;
+    }
+
+    public void setUnitStr(String unitStr) {
+        this.unitStr = unitStr;
+    }
+
+    public String getTake_way_str() {
+        return take_way_str;
+    }
+
+    public void setTake_way_str(String take_way_str) {
+        this.take_way_str = take_way_str;
+    }
+
+    public String getGapStr() {
+        return gapStr;
+    }
+
+    public void setGapStr(String gapStr) {
+        this.gapStr = gapStr;
+    }
+
+    public String getPersistStr() {
+        return persistStr;
+    }
+
+    public void setPersistStr(String persistStr) {
+        this.persistStr = persistStr;
+    }
+
+    public String getDose_type_str() {
+        return dose_type_str;
+    }
+
+    public void setDose_type_str(String dose_type_str) {
+        this.dose_type_str = dose_type_str;
     }
 }

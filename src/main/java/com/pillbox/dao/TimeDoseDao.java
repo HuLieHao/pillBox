@@ -9,4 +9,9 @@ import com.pillbox.po.TimeDose;
 public interface TimeDoseDao {
 
     void save(TimeDose dose);
+
+    void update(TimeDose dose);
+
+    void delete(TimeDose dose);
+
 }

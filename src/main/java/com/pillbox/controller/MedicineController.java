@@ -64,18 +64,28 @@ public class MedicineController {
      * @return view page
      */
     @RequestMapping(value = "/toAddMedicine")
-    public String addMedicine(@RequestParam String openId, ModelMap model) {
+    public String addMedicine(@RequestParam(required = false) Long drugId,
+                              @RequestParam String openId,
+                              ModelMap model) {
 
+
+        DrugManagement drug = new DrugManagement();
+        if (drugId != null) {
+            drug = this.drugManagementService.selectById(drugId);
+        }
+
+        model.addAttribute("drug", drug);
         model.addAttribute("openId", openId);
         return VIEW_ADD_MEDICINE;
     }
 
     /**
-     * 设置服药时间
+     * 设置或修改服药时间
      * @return view page
      */
     @RequestMapping(value = "/setMedicineTime")
-    public String setMedicineTime(@RequestParam String openId,
+    public String setMedicineTime(@RequestParam(required = false) Long drugId,
+                                  @RequestParam String openId,
                                   @RequestParam String medicineName,
                                   @RequestParam String surplus,
                                   @RequestParam String unit,
@@ -84,6 +94,20 @@ public class MedicineController {
                                   @RequestParam String doctor,
                                   @RequestParam(required = false) String add_remind,
                                   ModelMap model) {
+
+        DrugManagement drug = new DrugManagement();
+        if (drugId !=null) {
+            drug = this.drugManagementService.selectById(drugId);
+            medicineName = drug.getName();
+            surplus = drug.getSurplus();
+            unit = drug.getUnit();
+            takeResion = drug.getTake_resion();
+            takeWay = drug.getTake_way();
+            doctor = drug.getDoctor();
+            add_remind = drug.getAdd_remind();
+
+        }
+        model.addAttribute("drug", drug);
 
         model.addAttribute("openId", openId);
         model.addAttribute("medicineName", medicineName);
@@ -98,11 +122,12 @@ public class MedicineController {
     }
 
     /**
-     * 保存添加的服药信息
+     * 保存或修改添加的服药信息
      * @return
      */
     @RequestMapping(value = "/saveAddMedicine")
-    public String saveAddMedicine(@RequestParam String openId,
+    public String saveAddMedicine(@RequestParam(required = false) Long drugId,
+                                  @RequestParam String openId,
                                   @RequestParam String medicineName,
                                   @RequestParam String surplus,
                                   @RequestParam String unit,
@@ -116,8 +141,21 @@ public class MedicineController {
                                   @RequestParam String dose_type,
                                   ModelMap model) {
 
-        DrugManagement drugManagement = this.drugManagementService.save(openId, medicineName, surplus, unit, takeResion, takeWay, doctor, add_remind, gap, times_dose_times, persist, dose_type);
+        this.drugManagementService.saveOrUpdate(drugId, openId, medicineName, surplus, unit, takeResion, takeWay, doctor, add_remind, gap, times_dose_times, persist, dose_type);
 
+        return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
+    }
+
+    /**
+     * 删除服药提醒
+     * @param drugId
+     * @param openId
+     * @return
+     */
+    @RequestMapping(value = "/deleteMedicine")
+    public String deleteMedicine(@RequestParam Long drugId, @RequestParam String openId) {
+
+        this.drugManagementService.delete(drugId);
         return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
     }
 

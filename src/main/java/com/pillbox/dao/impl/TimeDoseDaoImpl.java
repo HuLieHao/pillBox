@@ -20,4 +20,14 @@ public class TimeDoseDaoImpl implements TimeDoseDao {
     public void save(TimeDose dose) {
         this.sessionFactory.openSession().save(dose);
     }
+
+    @Override
+    public void update(TimeDose dose) {
+        this.sessionFactory.openSession().update(dose);
+    }
+
+    @Override
+    public void delete(TimeDose dose) {
+        this.sessionFactory.openSession().delete(dose);
+    }
 }

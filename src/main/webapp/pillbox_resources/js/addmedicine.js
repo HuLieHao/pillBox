@@ -40,4 +40,10 @@ $(document).ready(function(){
         $(this).parent(".form-group").find(".control-label").find("small").text("");
     })
 
+    $("#delete").click(function() {
+        var drugId = $(this).attr("drug-id");
+        var openId = $(this).attr("open-id");
+        window.location.href = "/pillBox/medicine/deleteMedicine?openId=" + openId + "&drugId=" + drugId;
+    });
+
 });

@@ -17,11 +17,12 @@
 <div class="container-fluid">
     <form id="addMedicine" action="/pillBox/medicine/setMedicineTime" method="post">
         <input type="hidden" name="openId" value="${openId!""}">
+        <input type="hidden" name="drugId" value="${drug.id!""}">
   <div class="row">
     <div class="col-md-12">
         <div class="form-group">
             <label class="control-label">药物名称<small></small></label>
-            <input type="text" name="medicineName" class="form-control input-lg">
+            <input type="text" name="medicineName" class="form-control input-lg" value="${drug.name!""}">
         </div>
     </div>
   </div>
@@ -30,7 +31,7 @@
     <div class="col-md-12">
       <div class="form-group">
           <label class="control-label">当前剩余<small></small></label>
-          <input type="text" name="surplus" class="form-control input-lg">
+          <input type="text" name="surplus" class="form-control input-lg" value="${drug.surplus!""}">
       </div>
       </div>
   </div>
@@ -40,13 +41,12 @@
       <div class="form-group">
         <label class="control-label">单位<small></small></label>
         <select name="unit" class="form-control input-lg">
-          <option value="片">片</option>
-          <option value="个">个</option>
-          <option value="胶囊">胶囊</option>
-          <option value="药丸">药丸</option>
-          <option value="克">克</option>
-          <option value="毫升">毫升</option>
-          <option value="滴">滴</option>
+          <option value="1" <#if drug.unit?exists && drug.unit == '1'>selected</#if>>片</option>
+          <option value="2" <#if drug.unit?exists && drug.unit == '2'>selected</#if>>胶囊</option>
+          <option value="3" <#if drug.unit?exists && drug.unit == '3'>selected</#if>>药丸</option>
+          <option value="4" <#if drug.unit?exists && drug.unit == '4'>selected</#if>>克</option>
+          <option value="5" <#if drug.unit?exists && drug.unit == '5'>selected</#if>>毫升</option>
+          <option value="6" <#if drug.unit?exists && drug.unit == '6'>selected</#if>>滴</option>
         </select>
       </div>
     </div>
@@ -56,7 +56,7 @@
     <div class="col-md-12">
       <div class="form-group">
           <label class="control-label">服用原因<small></small></label>
-          <input type="text" name="takeResion" class="form-control input-lg">
+          <input type="text" name="takeResion" class="form-control input-lg" value="${drug.take_resion!""}">
       </div>
     </div>
   </div>
@@ -66,9 +66,9 @@
       <div class="form-group">
           <label class="control-label">服用方式<small></small></label>
           <select name="takeWay" class="form-control input-lg">
-              <option value="口服">口服</option>
-              <option value="注射">注射</option>
-              <option value="其他">其他</option>
+              <option value="1" <#if drug.take_way?exists && drug.take_way == '1'>selected</#if>>口服</option>
+              <option value="2" <#if drug.take_way?exists && drug.take_way == '2'>selected</#if>>注射</option>
+              <option value="3" <#if drug.take_way?exists && drug.take_way == '3'>selected</#if>>其他</option>
           </select>
       </div>
     </div>
@@ -78,7 +78,7 @@
     <div class="col-md-12">
       <div class="form-group">
         <label class="control-label">医生<small></small></label>
-        <input type="text" name="doctor" class="form-control input-lg">
+        <input type="text" name="doctor" class="form-control input-lg" value="${drug.doctor!""}">
       </div>
     </div>
   </div>
@@ -88,7 +88,7 @@
       <div class="has-error">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="add_remind" id="checkboxError" value="isRemind">
+            <input type="checkbox" name="add_remind" id="checkboxError" value="1" <#if drug.add_remind?exists && drug.add_remind == '1'>checked</#if>>
             是否补充提醒
           </label>
         </div>
@@ -100,10 +100,20 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group" style="text-align: center">
-        <button type="button" id="submit" class="form-control btn btn-danger input-lg" style="width: 90%">设置服药时间</button>
+        <button type="button" id="submit" class="form-control btn btn-info input-lg" style="width: 90%">设置服药时间</button>
       </div>
     </div>
   </div>
+
+    <#if drug.id?exists>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="text-align: center">
+                    <button type="button" id="delete" drug-id="${drug.id!""}" open-id="${openId!""}" class="form-control btn btn-danger input-lg" style="width: 90%">删除服药提醒</button>
+                </div>
+            </div>
+        </div>
+    </#if>
 
     <!-- loading toast -->
     <div id="loadingToast" class="weui_loading_toast" style="display:none;">
