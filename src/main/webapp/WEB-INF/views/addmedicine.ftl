@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="/pillbox_resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/pillbox_resources/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/pillbox_resources/css/weui.css">
 
 </head>
 <body style="background-image: url('/pillbox_resources/images/bg_activity.png'); margin-top: 20px">
@@ -27,7 +29,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        当前剩余<input type="text" name="surplus" class="form-control input-lg">
+          <label class="control-label">当前剩余<small></small></label>
+          <input type="text" name="surplus" class="form-control input-lg">
       </div>
       </div>
   </div>
@@ -35,15 +38,15 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        单位
+        <label class="control-label">单位<small></small></label>
         <select name="unit" class="form-control input-lg">
-          <option value="1">片</option>
-          <option value="2">个</option>
-          <option value="3">胶囊</option>
-          <option value="4">药丸</option>
-          <option value="5">克</option>
-          <option value="6">毫升</option>
-          <option value="7">滴</option>
+          <option value="片">片</option>
+          <option value="个">个</option>
+          <option value="胶囊">胶囊</option>
+          <option value="药丸">药丸</option>
+          <option value="克">克</option>
+          <option value="毫升">毫升</option>
+          <option value="滴">滴</option>
         </select>
       </div>
     </div>
@@ -52,7 +55,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服用原因<input type="text" name="takeResion" class="form-control input-lg">
+          <label class="control-label">服用原因<small></small></label>
+          <input type="text" name="takeResion" class="form-control input-lg">
       </div>
     </div>
   </div>
@@ -60,7 +64,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服用方式
+          <label class="control-label">服用方式<small></small></label>
           <select name="takeWay" class="form-control input-lg">
               <option value="口服">口服</option>
               <option value="注射">注射</option>
@@ -72,8 +76,8 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div class="form-group has-error">
-        <label class="control-label">医生 <small>医生姓名不能为空</small></label>
+      <div class="form-group">
+        <label class="control-label">医生<small></small></label>
         <input type="text" name="doctor" class="form-control input-lg">
       </div>
     </div>
@@ -100,6 +104,28 @@
       </div>
     </div>
   </div>
+
+    <!-- loading toast -->
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
 
 </div>
 

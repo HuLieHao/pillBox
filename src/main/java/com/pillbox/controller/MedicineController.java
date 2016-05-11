@@ -1,12 +1,16 @@
 package com.pillbox.controller;
 
+import com.pillbox.po.DrugManagement;
 import com.pillbox.po.User;
+import com.pillbox.service.DrugManagementService;
 import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * User:  maktub
@@ -19,6 +23,9 @@ public class MedicineController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DrugManagementService drugManagementService;
 
 
     @RequestMapping("/index")
@@ -40,7 +47,14 @@ public class MedicineController {
     @RequestMapping(value = "/toMyMedicine")
     public String myMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
-        model.addAttribute("openId", "oQRiyv9PK8asUdaJ7WX88bmpy1ns");
+        openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+
+        List<DrugManagement> drugs = this.drugManagementService.selectByOpenId(openId);
+        if (drugs.size() == 0) {
+            return "redirect:/pillBox/medicine/toAddMedicine?openId=" + openId;
+        }
+        model.addAttribute("openId", openId);
+        model.addAttribute("drugs", drugs);
 
         return VIEW_MY_MEDICINE;
     }
@@ -98,10 +112,11 @@ public class MedicineController {
                                   @RequestParam(required = false) String add_remind,
                                   @RequestParam String gap,
                                   @RequestParam String times_dose_times,
-                                  @RequestParam String times_dose_nums,
                                   @RequestParam String persist,
                                   @RequestParam String dose_type,
                                   ModelMap model) {
+
+        DrugManagement drugManagement = this.drugManagementService.save(openId, medicineName, surplus, unit, takeResion, takeWay, doctor, add_remind, gap, times_dose_times, persist, dose_type);
 
         return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
     }

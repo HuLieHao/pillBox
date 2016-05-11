@@ -22,4 +22,11 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         this.userDao.save(user);
     }
+
+    @Override
+    public User selectByOpenId(String openId) {
+        return this.userDao.selectByOpenId(openId);
+    }
+
+
 }

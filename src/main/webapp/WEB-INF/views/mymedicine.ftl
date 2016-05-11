@@ -51,23 +51,29 @@
         <!-- Swiper -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">维他命哈</div>
-                <div class="swiper-slide">降压药</div>
-                <div class="swiper-slide">降糖药</div>
-                <div class="swiper-slide">感冒药</div>
-                <div class="swiper-slide">泻药</div>
+                <#list drugs as drug>
+                    <div class="swiper-slide" drug-id="${drug.id}">${drug.name}</div>
+                </#list>
             </div>
-            <%--<!-- Add Pagination -->--%>
-            <%--<div class="swiper-pagination"></div>--%>
+            <!-- Add Pagination -->
+           <#--<div class="swiper-pagination"></div>-->
         </div>
     </div>
     <div class="row" style="text-align: center; background: #ffffff">
         <div class="col-md-12">
             <p style="margin-bottom: 0px"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></p>
-            <p>服用时间 - 每日<#if day?exists>你好</#if></p>
-            <p>08:30(1); 00:30(1)</p>
-            <p>口服 / 饭后服用</p>
-            <p>开始: 02/18/16</p>
+            <#list drugs as drug>
+                <div class="drug-content" <#if drug_index == 0> style="display: block;" <#else> style="display: none;" </#if>>
+                    <p>服用时间 - ${drug.gap!""}</p>
+                    <p>
+                        <#list drug.times_dose as times>
+                            ${times.time_str!""}(${times.num!""})
+                        </#list>
+                    </p>
+                    <p>${drug.take_way!""} / ${drug.dose_type!""}</p>
+                    <p>开始: ${drug.intime?string("MM/dd/yy")}</p>
+                </div>
+            </#list>
         </div>
     </div>
     <div class="row" style="text-align: center; background: #ffffff">
@@ -109,7 +115,14 @@
         centeredSlides: true,
         paginationClickable: true,
         spaceBetween: 30,
-        grabCursor: true
+        grabCursor: true,
+        onSlideChangeStart: function(swiper){
+            var activeIndex = swiper.activeIndex;
+            var previousIndex = swiper.previousIndex;
+            var drug_id = $(".swiper-slide").eq(activeIndex).attr("drug-id");
+            $(".drug-content").eq(activeIndex).css("display", "block");
+            $(".drug-content").eq(previousIndex).css("display", "none");
+        }
     });
 </script>
 

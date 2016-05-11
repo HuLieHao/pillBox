@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="/pillbox_resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/pillbox_resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/pillbox_resources/css/weui.css">
 
 </head>
-<body style="background-image: url('/resources/images/bg_activity.png'); margin-top: 20px">
+<body style="background-image: url('/pillbox_resources/images/bg_activity.png'); margin-top: 20px">
 
 <div class="container-fluid">
   <form id="setTime" action="/pillBox/medicine/saveAddMedicine" method="post">
@@ -29,8 +30,8 @@
         <div class="form-group">
           间隔
           <select name="gap" class="form-control input-lg">
-            <option value="0">每日</option>
-            <option value="1">一次性事件</option>
+            <option value="每日">每日</option>
+            <option value="一次性事件">一次性事件</option>
           </select>
         </div>
     </div>
@@ -39,8 +40,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服药时间
-        <input type="text" name="times_dose_times" class="form-control input-lg" placeholder="输入多个服用时间, 如08:30;22:00">
+          <label class="control-label">服药时间(剂量)<small></small></label>
+          <input type="text" name="times_dose_times" class="form-control input-lg" placeholder="服用时间与剂量,如08:30(2);22:00(3)">
       </div>
     </div>
   </div>
@@ -48,8 +49,19 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服药剂量<small>(与服药时间相对应)</small>
-        <input type="text" name="times_dose_nums" class="form-control input-lg" placeholder="输入服药剂量, 如1;1.5">
+          <label class="control-label">持续时间<small></small></label>
+          <select name="persist" class="form-control input-lg">
+            <option value="1">1天</option>
+            <option value="2">2天</option>
+            <option value="3">3天</option>
+            <option value="4">4天</option>
+            <option value="5">5天</option>
+            <option value="6">6天</option>
+            <option value="7">1周</option>
+            <option value="14">2周</option>
+            <option value="21">3周</option>
+            <option value="30">1月</option>
+          </select>
       </div>
     </div>
   </div>
@@ -57,33 +69,13 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        持续时间
-        <select name="persist" class="form-control input-lg">
-          <option value="1">1天</option>
-          <option value="2">2天</option>
-          <option value="3">3天</option>
-          <option value="4">4天</option>
-          <option value="5">5天</option>
-          <option value="6">6天</option>
-          <option value="7">1周</option>
-          <option value="14">2周</option>
-          <option value="21">3周</option>
-          <option value="30">1月</option>
-        </select>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-        服用说明
-        <select name="dose_type" class="form-control input-lg">
-          <option value="0">饭前服用</option>
-          <option value="1">与食物一起</option>
-          <option value="2">饭后服用</option>
-          <option value="3">与食物无关</option>
-        </select>
+          <label class="control-label">服用说明<small></small></label>
+          <select name="dose_type" class="form-control input-lg">
+            <option value="饭前服用">饭前服用</option>
+            <option value="与食物一起">与食物一起</option>
+            <option value="饭后服用">饭后服用</option>
+            <option value="与食物无关">与食物无关</option>
+          </select>
       </div>
     </div>
   </div>
@@ -97,6 +89,28 @@
       </div>
     </div>
   </div>
+
+    <!-- loading toast -->
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
 
 </div>
 

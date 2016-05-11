@@ -2,7 +2,8 @@ package com.pillbox.po;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 我的药物管理
@@ -15,17 +16,18 @@ public class DrugManagement {
 
     //主键自增ID
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Long id;
 
     //用户基本信息表关联
-    @ManyToOne
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
     public User user;
 
     //药品名
     public String name;
 
     //剩余量
-    public Float surplus;
+    public String surplus;
 
     //单位
     public String unit;
@@ -43,17 +45,18 @@ public class DrugManagement {
     public String gap;
 
     //服务时间和剂量
-    @OneToMany
-    public List<TimeDose> times_dose;
+    @OneToMany(targetEntity = TimeDose.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "drug_id", updatable = false)
+    public Set<TimeDose> times_dose = new HashSet<TimeDose>();
 
     //持续时间
-    public Integer persist;
+    public String persist;
 
     //服药说明
-    public Byte dose_type;
+    public String dose_type;
 
     //是否补充提醒 0: 不提醒 1: 提醒
-    public Byte add_remind;
+    public String add_remind;
 
     //创建时间
     public Date intime = new Date();
@@ -83,11 +86,11 @@ public class DrugManagement {
         this.name = name;
     }
 
-    public Float getSurplus() {
+    public String getSurplus() {
         return surplus;
     }
 
-    public void setSurplus(Float surplus) {
+    public void setSurplus(String surplus) {
         this.surplus = surplus;
     }
 
@@ -131,35 +134,35 @@ public class DrugManagement {
         this.gap = gap;
     }
 
-    public List<TimeDose> getTimes_dose() {
+    public Set<TimeDose> getTimes_dose() {
         return times_dose;
     }
 
-    public void setTimes_dose(List<TimeDose> times_dose) {
+    public void setTimes_dose(Set<TimeDose> times_dose) {
         this.times_dose = times_dose;
     }
 
-    public Integer getPersist() {
+    public String getPersist() {
         return persist;
     }
 
-    public void setPersist(Integer persist) {
+    public void setPersist(String persist) {
         this.persist = persist;
     }
 
-    public Byte getDose_type() {
+    public String getDose_type() {
         return dose_type;
     }
 
-    public void setDose_type(Byte dose_type) {
+    public void setDose_type(String dose_type) {
         this.dose_type = dose_type;
     }
 
-    public Byte getAdd_remind() {
+    public String getAdd_remind() {
         return add_remind;
     }
 
-    public void setAdd_remind(Byte add_remind) {
+    public void setAdd_remind(String add_remind) {
         this.add_remind = add_remind;
     }
 
