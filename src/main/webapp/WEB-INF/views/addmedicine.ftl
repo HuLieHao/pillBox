@@ -12,12 +12,14 @@
 </head>
 <body style="background-image: url('/pillbox_resources/images/bg_activity.png'); margin-top: 20px">
 
-<div class="container-fluid" open-id="${openId!""}">
-
+<div class="container-fluid">
+    <form id="addMedicine" action="/pillBox/medicine/setMedicineTime" method="post">
+        <input type="hidden" name="openId" value="${openId!""}">
   <div class="row">
     <div class="col-md-12">
         <div class="form-group">
-          药物名称<input type="text" name="medicineName" class="form-control input-lg">
+            <label class="control-label">药物名称<small></small></label>
+            <input type="text" name="medicineName" class="form-control input-lg">
         </div>
     </div>
   </div>
@@ -35,13 +37,13 @@
       <div class="form-group">
         单位
         <select name="unit" class="form-control input-lg">
-          <option>片</option>
-          <option>个</option>
-          <option>胶囊</option>
-          <option>药丸</option>
-          <option>克</option>
-          <option>毫升</option>
-          <option>滴</option>
+          <option value="1">片</option>
+          <option value="2">个</option>
+          <option value="3">胶囊</option>
+          <option value="4">药丸</option>
+          <option value="5">克</option>
+          <option value="6">毫升</option>
+          <option value="7">滴</option>
         </select>
       </div>
     </div>
@@ -58,14 +60,19 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服用方式<input type="text" name="takeWay" class="form-control input-lg">
+        服用方式
+          <select name="takeWay" class="form-control input-lg">
+              <option value="口服">口服</option>
+              <option value="注射">注射</option>
+              <option value="其他">其他</option>
+          </select>
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      <div class="form-group  has-error">
+      <div class="form-group has-error">
         <label class="control-label">医生 <small>医生姓名不能为空</small></label>
         <input type="text" name="doctor" class="form-control input-lg">
       </div>
@@ -77,18 +84,19 @@
       <div class="has-error">
         <div class="checkbox">
           <label>
-            <input type="checkbox" id="checkboxError" value="option1">
+            <input type="checkbox" name="add_remind" id="checkboxError" value="isRemind">
             是否补充提醒
           </label>
         </div>
       </div>
     </div>
   </div>
+    </form>
 
   <div class="row">
     <div class="col-md-12">
       <div class="form-group" style="text-align: center">
-        <button type="button" class="form-control btn btn-danger input-lg" style="width: 90%">设置服药时间</button>
+        <button type="button" id="submit" class="form-control btn btn-danger input-lg" style="width: 90%">设置服药时间</button>
       </div>
     </div>
   </div>
@@ -99,5 +107,7 @@
 <script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/pillbox_resources/js/bootstrap.min.js"></script>
+
+<script src="/pillbox_resources/js/addmedicine.js"></script>
 </body>
 </html>

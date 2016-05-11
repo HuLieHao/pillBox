@@ -13,14 +13,24 @@
 <body style="background-image: url('/resources/images/bg_activity.png'); margin-top: 20px">
 
 <div class="container-fluid">
+  <form id="setTime" action="/pillBox/medicine/saveAddMedicine" method="post">
+
+      <input type="hidden" name="openId" value="${openId!""}">
+      <input type="hidden" name="medicineName" value="${medicineName!""}">
+      <input type="hidden" name="surplus" value="${surplus!""}">
+      <input type="hidden" name="unit" value="${unit!""}">
+      <input type="hidden" name="takeResion" value="${takeResion!""}">
+      <input type="hidden" name="takeWay" value="${takeWay!""}">
+      <input type="hidden" name="doctor" value="${doctor!""}">
+      <input type="hidden" name="add_remind" value="${add_remind!""}">
 
   <div class="row">
     <div class="col-md-12">
         <div class="form-group">
           间隔
-          <select class="form-control input-lg">
-            <option>每日</option>
-            <option>一次性事件</option>
+          <select name="gap" class="form-control input-lg">
+            <option value="0">每日</option>
+            <option value="1">一次性事件</option>
           </select>
         </div>
     </div>
@@ -30,7 +40,7 @@
     <div class="col-md-12">
       <div class="form-group">
         服药时间
-        <input type="text" class="form-control input-lg" placeholder="输入多个服用时间, 如08:30;22:00">
+        <input type="text" name="times_dose_times" class="form-control input-lg" placeholder="输入多个服用时间, 如08:30;22:00">
       </div>
     </div>
   </div>
@@ -38,8 +48,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        服药剂量
-        <input type="text" class="form-control input-lg" placeholder="输入服药剂量, 如1、1.5">
+        服药剂量<small>(与服药时间相对应)</small>
+        <input type="text" name="times_dose_nums" class="form-control input-lg" placeholder="输入服药剂量, 如1;1.5">
       </div>
     </div>
   </div>
@@ -48,18 +58,17 @@
     <div class="col-md-12">
       <div class="form-group">
         持续时间
-        <select class="form-control input-lg">
-          <option>1天</option>
-          <option>2天</option>
-          <option>3天</option>
-          <option>4天</option>
-          <option>5天</option>
-          <option>6天</option>
-          <option>1周</option>
-          <option>2周</option>
-          <option>3周</option>
-          <option>1月</option>
-          <option>永久</option>
+        <select name="persist" class="form-control input-lg">
+          <option value="1">1天</option>
+          <option value="2">2天</option>
+          <option value="3">3天</option>
+          <option value="4">4天</option>
+          <option value="5">5天</option>
+          <option value="6">6天</option>
+          <option value="7">1周</option>
+          <option value="14">2周</option>
+          <option value="21">3周</option>
+          <option value="30">1月</option>
         </select>
       </div>
     </div>
@@ -69,20 +78,22 @@
     <div class="col-md-12">
       <div class="form-group">
         服用说明
-        <select class="form-control input-lg">
-          <option>饭前服用</option>
-          <option>与食物一起</option>
-          <option>饭后服用</option>
-          <option>与食物无关</option>
+        <select name="dose_type" class="form-control input-lg">
+          <option value="0">饭前服用</option>
+          <option value="1">与食物一起</option>
+          <option value="2">饭后服用</option>
+          <option value="3">与食物无关</option>
         </select>
       </div>
     </div>
   </div>
 
+  </form>
+
   <div class="row">
     <div class="col-md-12">
       <div class="form-group" style="text-align: center">
-        <button type="button" class="form-control btn btn-danger input-lg" style="width: 90%">确认完成</button>
+        <button id="submit" type="button" class="form-control btn btn-danger input-lg" style="width: 90%">确认完成</button>
       </div>
     </div>
   </div>
@@ -93,5 +104,6 @@
 <script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/pillbox_resources/js/bootstrap.min.js"></script>
+<script src="/pillbox_resources/js/setmedicinetime.js"></script>
 </body>
 </html>

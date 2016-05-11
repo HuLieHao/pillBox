@@ -38,7 +38,7 @@ public class MedicineController {
      * @return view page
      */
     @RequestMapping(value = "/toMyMedicine")
-    public String myMedicine(ModelMap model) {
+    public String myMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
         model.addAttribute("openId", "oQRiyv9PK8asUdaJ7WX88bmpy1ns");
 
@@ -61,9 +61,49 @@ public class MedicineController {
      * @return view page
      */
     @RequestMapping(value = "/setMedicineTime")
-    public String setMedicineTime() {
+    public String setMedicineTime(@RequestParam String openId,
+                                  @RequestParam String medicineName,
+                                  @RequestParam String surplus,
+                                  @RequestParam String unit,
+                                  @RequestParam String takeResion,
+                                  @RequestParam String takeWay,
+                                  @RequestParam String doctor,
+                                  @RequestParam(required = false) String add_remind,
+                                  ModelMap model) {
+
+        model.addAttribute("openId", openId);
+        model.addAttribute("medicineName", medicineName);
+        model.addAttribute("surplus", surplus);
+        model.addAttribute("unit", unit);
+        model.addAttribute("takeResion", takeResion);
+        model.addAttribute("takeWay", takeWay);
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("add_remind", add_remind);
 
         return VIEW_SET_MEDICINE_TIME;
+    }
+
+    /**
+     * 保存添加的服药信息
+     * @return
+     */
+    @RequestMapping(value = "/saveAddMedicine")
+    public String saveAddMedicine(@RequestParam String openId,
+                                  @RequestParam String medicineName,
+                                  @RequestParam String surplus,
+                                  @RequestParam String unit,
+                                  @RequestParam String takeResion,
+                                  @RequestParam String takeWay,
+                                  @RequestParam String doctor,
+                                  @RequestParam(required = false) String add_remind,
+                                  @RequestParam String gap,
+                                  @RequestParam String times_dose_times,
+                                  @RequestParam String times_dose_nums,
+                                  @RequestParam String persist,
+                                  @RequestParam String dose_type,
+                                  ModelMap model) {
+
+        return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
     }
 
     /**

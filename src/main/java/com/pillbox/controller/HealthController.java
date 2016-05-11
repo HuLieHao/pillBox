@@ -39,6 +39,16 @@ public class HealthController {
     }
 
     /**
+     * 快速急救详情
+     * @return
+     */
+    @RequestMapping(value = "/toRapidFirstAidDetail")
+    public String toRapidFirstAidDetail() {
+
+        return VIEW_RAPID_FIRST_AID_DETAIL;
+    }
+
+    /**
      * 健康常识
      * @return
      */
@@ -46,6 +56,16 @@ public class HealthController {
     public String toHealthKnowledge() {
 
         return VIEW_HEALTH_KNOWLEDGE;
+    }
+
+    /**
+     * 健康常识详情
+     * @return
+     */
+    @RequestMapping(value = "/toHealthKnowLedgeDetail")
+    public String toHealthKnowLedgeDetail() {
+
+        return VIEW_HEALTH_KNOWLEDGE_DETAIL;
     }
 
     /**
@@ -62,7 +82,11 @@ public class HealthController {
 
     private static final String VIEW_RAPID_FIRST_AID = "rapidfirstaid";
 
+    private static final String VIEW_RAPID_FIRST_AID_DETAIL = "rapidfirstaid_detail";
+
     private static final String VIEW_HEALTH_KNOWLEDGE = "healthknowledge";
+
+    private static final String VIEW_HEALTH_KNOWLEDGE_DETAIL = "healthknowledge_detail";
 
     private static final String VIEW_DOCTOR_DIARY = "doctordiary";
 

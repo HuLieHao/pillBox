@@ -85,7 +85,7 @@
     <div class="row" style="text-align: center; background: #ffffff">
         <div class="col-md-12">
             <br>
-            <button type="button" class="btn btn-info input-lg my-medicine" style="width: 90%" open-id="${openId!""}">添加药物</button>
+            <button type="button" class="btn btn-info input-lg my-medicine" style="width: 90%" open-id="${openId!""}">添加一个新的药物</button>
             <br/>&nbsp;&nbsp;
         </div>
     </div>

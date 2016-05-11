@@ -15,9 +15,9 @@
 
     <div class="col-md-12">
         <div class="panel panel-info">
-            <div class="panel-heading">鱼刺卡喉了该如何进行急救？</div>
+            <div class="panel-heading">手烫伤了怎么办</div>
             <div class="panel-body">
-                鱼在饭桌上是常见的食物，有很多人都喜欢吃的。但是鱼虽然美味，鱼刺却也多，吃鱼的朋友一不小心就可能卡到鱼刺了，那么这时应该怎么进行急救措施呢？ …
+                生活中一不小心烫伤是常有的事情，那么手烫伤了怎么办？手烫伤了该如何急救呢？一起去看看吧。
             </div>
         </div>
     </div>
@@ -48,5 +48,6 @@
 <script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/pillbox_resources/js/bootstrap.min.js"></script>
+<script src="/pillbox_resources/js/rapidfirstaid.js"></script>
 </body>
 </html>

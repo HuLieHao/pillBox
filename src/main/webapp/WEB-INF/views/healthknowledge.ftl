@@ -37,5 +37,6 @@
 <script src="/pillbox_resources/js/jquery.1.11.3.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/pillbox_resources/js/bootstrap.min.js"></script>
+<script src="/pillbox_resources/js/healthknowledge.js"></script>
 </body>
 </html>
