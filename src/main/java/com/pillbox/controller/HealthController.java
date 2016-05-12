@@ -78,6 +78,27 @@ public class HealthController {
         return VIEW_DOCTOR_DIARY;
     }
 
+    /**
+     * 医生日记详情
+     * @return
+     */
+    @RequestMapping(value = "/toDoctorDiaryDetail")
+    public String toDoctorDiaryDetail() {
+
+
+        return VIEW_DOCTOR_DIARY_DETAIL;
+    }
+
+    /**
+     * 修改、添加预约添加
+     * @return
+     */
+    @RequestMapping(value = "/updateDoctorDiary")
+    public String updateDoctorDiary() {
+
+        return "redirect:/pillBox/health/toDoctorDiary";
+    }
+
     private static final String VIEW_DISEASE_SELF_DIAGNOSIS = "diseaseSelfDiagnosis";
 
     private static final String VIEW_RAPID_FIRST_AID = "rapidfirstaid";
@@ -89,5 +110,7 @@ public class HealthController {
     private static final String VIEW_HEALTH_KNOWLEDGE_DETAIL = "healthknowledge_detail";
 
     private static final String VIEW_DOCTOR_DIARY = "doctordiary";
+
+    private static final String VIEW_DOCTOR_DIARY_DETAIL = "doctordiarydetail";
 
 }

@@ -1,7 +1,6 @@
 package com.pillbox.controller;
 
 import com.pillbox.po.DrugManagement;
-import com.pillbox.po.User;
 import com.pillbox.service.DrugManagementService;
 import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
