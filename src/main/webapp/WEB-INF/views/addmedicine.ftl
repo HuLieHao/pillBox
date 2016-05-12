@@ -18,6 +18,7 @@
     <form id="addMedicine" action="/pillBox/medicine/setMedicineTime" method="post">
         <input type="hidden" name="openId" value="${openId!""}">
         <input type="hidden" name="drugId" value="${drug.id!""}">
+        <input type="hidden" name="parent" value="parent">
   <div class="row">
     <div class="col-md-12">
         <div class="form-group">

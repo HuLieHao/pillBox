@@ -17,4 +17,6 @@ public interface DrugManagementService {
     DrugManagement selectById(Long id);
 
     void delete(Long drugId);
+
+    DrugManagement updateSurplus(Long drugId, String surplus);
 }

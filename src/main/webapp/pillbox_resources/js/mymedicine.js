@@ -35,4 +35,9 @@ $(document).ready(function(){
         window.location.href = "/pillBox/medicine/setMedicineTime?openId=" + openId + "&drugId=" + drugId;;
     })
 
+    $("#addPrescription").click(function() {
+        $('#loadingToast').show();
+        window.location.href = "/pillBox/medicine/toAddPrescription?openId=" + openId + "&drugId=" + drugId;
+    })
+
 });

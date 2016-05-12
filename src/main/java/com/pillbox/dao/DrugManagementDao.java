@@ -17,6 +17,8 @@ public interface DrugManagementDao {
 
     void delete(DrugManagement drugManagement);
 
+    void saveOrUpdate(DrugManagement drug);
+
     List<DrugManagement> selectByOpenId(User user);
 
     DrugManagement selectById(Long id);

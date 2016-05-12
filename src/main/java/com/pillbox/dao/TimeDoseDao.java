@@ -14,4 +14,6 @@ public interface TimeDoseDao {
 
     void delete(TimeDose dose);
 
+    void deleteById(Long id);
+
 }

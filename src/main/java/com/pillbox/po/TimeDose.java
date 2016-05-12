@@ -25,7 +25,7 @@ public class TimeDose {
     public Long num;
 
     @ManyToOne(targetEntity = DrugManagement.class)
-    @JoinColumn(name = "drug_id", updatable =false)
+    @JoinColumn(name = "drug_id")
     public DrugManagement drug;
 
 

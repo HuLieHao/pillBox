@@ -1,6 +1,11 @@
 package com.pillbox.po;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -21,7 +26,7 @@ public class DrugManagement {
     public Long id;
 
     //用户基本信息表关联
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     public User user;
 
     //药品名
@@ -52,8 +57,8 @@ public class DrugManagement {
     public String gapStr;
 
     //服务时间和剂量
-    @OneToMany(targetEntity = TimeDose.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "drug_id", updatable = false)
+    @OneToMany(targetEntity = TimeDose.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "drug_id")
     public Set<TimeDose> times_dose = new LinkedHashSet<TimeDose>();
 
     //持续时间

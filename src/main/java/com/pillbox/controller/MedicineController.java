@@ -86,26 +86,28 @@ public class MedicineController {
     @RequestMapping(value = "/setMedicineTime")
     public String setMedicineTime(@RequestParam(required = false) Long drugId,
                                   @RequestParam String openId,
-                                  @RequestParam String medicineName,
-                                  @RequestParam String surplus,
-                                  @RequestParam String unit,
-                                  @RequestParam String takeResion,
-                                  @RequestParam String takeWay,
-                                  @RequestParam String doctor,
+                                  @RequestParam(required = false) String parent,
+                                  @RequestParam(required = false) String medicineName,
+                                  @RequestParam(required = false) String surplus,
+                                  @RequestParam(required = false) String unit,
+                                  @RequestParam(required = false) String takeResion,
+                                  @RequestParam(required = false) String takeWay,
+                                  @RequestParam(required = false) String doctor,
                                   @RequestParam(required = false) String add_remind,
                                   ModelMap model) {
 
         DrugManagement drug = new DrugManagement();
         if (drugId !=null) {
             drug = this.drugManagementService.selectById(drugId);
-            medicineName = drug.getName();
-            surplus = drug.getSurplus();
-            unit = drug.getUnit();
-            takeResion = drug.getTake_resion();
-            takeWay = drug.getTake_way();
-            doctor = drug.getDoctor();
-            add_remind = drug.getAdd_remind();
-
+            if (parent == null) {
+                medicineName = drug.getName();
+                surplus = drug.getSurplus();
+                unit = drug.getUnit();
+                takeResion = drug.getTake_resion();
+                takeWay = drug.getTake_way();
+                doctor = drug.getDoctor();
+                add_remind = drug.getAdd_remind();
+            }
         }
         model.addAttribute("drug", drug);
 
@@ -160,6 +162,37 @@ public class MedicineController {
     }
 
     /**
+     * 进入到处方补充界面
+     * @param drugId
+     * @param openId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/toAddPrescription")
+    public String toAddPrescription(@RequestParam Long drugId, @RequestParam String openId, ModelMap model) {
+
+        DrugManagement drug = this.drugManagementService.selectById(drugId);
+        model.addAttribute("drug", drug);
+        model.addAttribute("openId", openId);
+        return VIEW_PRESCRIPTION;
+
+    }
+
+    /**
+     * 处方补充
+     * @param drugId
+     * @param openId
+     * @param surplus
+     * @return
+     */
+    @RequestMapping(value = "/addPrescription")
+    public String addPrescription(@RequestParam Long drugId, @RequestParam String openId, @RequestParam String surplus) {
+
+        this.drugManagementService.updateSurplus(drugId, surplus);
+        return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
+    }
+
+    /**
      * 历史记录
      * @return
      */
@@ -189,5 +222,7 @@ public class MedicineController {
     private static final String VIEW_MEDICINE_HISTORY = "medicinehistory";
 
     private static final String VIEW_TODAY_MEDICINE = "todaymedicine";
+
+    private static final String VIEW_PRESCRIPTION = "addprescription";
 
 }

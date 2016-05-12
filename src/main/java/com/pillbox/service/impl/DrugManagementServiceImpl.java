@@ -21,7 +21,6 @@ import java.util.Set;
  * Date:   16/5/11 下午12:11
  */
 @Service
-@Transactional
 public class DrugManagementServiceImpl implements DrugManagementService {
 
     @Autowired
@@ -87,7 +86,22 @@ public class DrugManagementServiceImpl implements DrugManagementService {
     @Override
     public void delete(Long drugId) {
         DrugManagement drug = this.drugDao.selectById(drugId);
-        if (drug != null) this.drugDao.delete(drug);
+        if (drug != null) {
+//            for (TimeDose time : drug.getTimes_dose()) {
+//                this.timeDoseDao.delete(time);
+//            }
+            this.drugDao.delete(drug);
+        }
+    }
+
+    @Override
+    public DrugManagement updateSurplus(Long drugId, String surplus) {
+        DrugManagement drug = this.drugDao.selectById(drugId);
+        if (drug != null) {
+            drug.setSurplus(surplus);
+            this.drugDao.update(drug);
+        }
+        return drug;
     }
 
     private String formatTime(int dose_time) {
@@ -100,8 +114,6 @@ public class DrugManagementServiceImpl implements DrugManagementService {
 
         if (drug.getTimes_dose().size() > 0) {
             for (TimeDose time : drug.getTimes_dose()) {
-                time.setDrug(null);
-                this.timeDoseDao.update(time);
                 this.timeDoseDao.delete(time);
             }
         }
