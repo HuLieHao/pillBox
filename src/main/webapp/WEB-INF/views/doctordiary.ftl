@@ -11,36 +11,25 @@
 </head>
 <body style="background-image: url('/pillbox_resources/images/bg_activity.png'); margin-top: 20px">
 
-<div class="container-fluid">
+<div class="container-fluid" open-id="${openId!""}">
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
                 <div class="weui_panel weui_panel_access">
                     <div class="weui_panel_hd">我的医生日志</div>
                     <div class="weui_panel_bd">
-
-                        <div class="weui_media_box weui_media_appmsg diary-detail">
-                            <div class="weui_media_hd">
-                                <img class="weui_media_appmsg_thumb" src="/pillbox_resources/images/icon_doctor.png" alt="">
+                        <#list diarys as diary>
+                            <div class="weui_media_box weui_media_appmsg diary-detail" diary-id="${diary.id!""}">
+                                <div class="weui_media_hd">
+                                    <img class="weui_media_appmsg_thumb" src="/pillbox_resources/images/icon_doctor.png" alt="">
+                                </div>
+                                <div class="weui_media_bd">
+                                    <h4 class="weui_media_title">${diary.appointment_time?string("HH:mm")}&nbsp;&nbsp;<small>${diary.appointment_time?string("MM/dd/yy")}</small></h4>
+                                    <strong>${diary.doctor_name!""}</strong>
+                                    <p class="weui_media_desc">${diary.remarks!""}</p>
+                                </div>
                             </div>
-                            <div class="weui_media_bd">
-                                <h4 class="weui_media_title">10:00 <small>12/05/16</small></h4>
-                                <strong>江医生</strong>
-                                <p class="weui_media_desc">去拨智齿</p>
-                            </div>
-                        </div>
-
-                        <div class="weui_media_box weui_media_appmsg diary-detail">
-                            <div class="weui_media_hd">
-                                <img class="weui_media_appmsg_thumb" src="/pillbox_resources/images/icon_doctor.png" alt="">
-                            </div>
-                            <div class="weui_media_bd">
-                                <h4 class="weui_media_title">14:40 <small>12/05/16</small></h4>
-                                <strong>李医生</strong>
-                                <p class="weui_media_desc">检查鼻炎</p>
-                            </div>
-                        </div>
-
+                        </#list>
                     </div>
                 </div>
             </div>

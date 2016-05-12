@@ -17,73 +17,76 @@
 <body style="background-image: url('/pillbox_resources/images/bg_activity.png'); margin-top: 20px">
 
 <div class="container-fluid">
-    <form id="addMedicine" action="/pillBox/medicine/setMedicineTime" method="post">
-        <input type="hidden" name="openId" value="">
-        <input type="hidden" name="drugId" value="">
-        <input type="hidden" name="parent" value="parent">
+    <form id="addDiary" action="/pillBox//health/updateDoctorDiary" method="post">
+
+        <input type="hidden" name="openId" value="${openId!""}">
+        <input type="hidden" name="diary_id" value="${diary_id!""}">
 
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="dtp_input2" class="col-md-2 control-label">预约日期</label>
+                    <label for="dtp_input2" class="col-md-2 control-label">预约日期<small></small></label>
                     <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd hh:ii">
-                        <input class="form-control" size="16" type="text" value="" readonly="">
+                        <input class="form-control" size="16" type="text" value="${diary.appointment_time!""}"" readonly="">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
-                    <input type="hidden" id="dtp_input2" value=""><br>
+                    <input type="hidden" name="appointment_time" id="dtp_input2" value="${diary.appointment_time!""}"><br>
                 </div>
             </div>
         </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-          <label class="control-label">医生姓名<small></small></label>
-          <input type="text" name="surplus" class="form-control input-lg" value="">
-      </div>
-      </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-          <label class="control-label">备注<small></small></label>
-          <input type="text" name="takeResion" class="form-control input-lg" value="">
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="has-error">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" name="add_remind" id="checkboxError" value="1">
-            是否提醒
-          </label>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">医生姓名<small></small></label>
+                    <input type="text" name="doctor_name" class="form-control input-lg" value="${diary.doctor_name!""}">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">备注<small></small></label>
+                    <input type="text" name="remarks" class="form-control input-lg" value="${diary.remarks!""}">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="has-error">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="is_remind" id="checkbox" value="1" <#if diary.is_remind?exists && diary.is_remind == '1'>checked</#if>>是否提醒
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </form>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group" style="text-align: center">
-        <button type="button" id="submit" class="form-control btn btn-info input-lg" style="width: 90%">保存预约日记</button>
-      </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" style="text-align: center">
+                <button type="button" id="submit" class="form-control btn btn-info input-lg" style="width: 90%"><#if diary?exists && diary.id?exists>修改<#else >保存</#if>预约日记
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 
-        <#--<div class="row">-->
-            <#--<div class="col-md-12">-->
-                <#--<div class="form-group" style="text-align: center">-->
-                    <#--<button type="button" id="delete" class="form-control btn btn-danger input-lg" style="width: 90%">删除预约日记</button>-->
-                <#--</div>-->
-            <#--</div>-->
-        <#--</div>-->
+    <#if diary?exists && diary.id?exists>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="text-align: center">
+                    <button type="button" id="delete" class="form-control btn btn-danger input-lg" style="width: 90%" open-id="${openId!""}" diary-id="${diary_id!""}">删除预约日记
+                    </button>
+                </div>
+            </div>
+        </div>
+    </#if>
 
     <!-- loading toast -->
     <div id="loadingToast" class="weui_loading_toast" style="display:none;">

@@ -1,10 +1,22 @@
 package com.pillbox.controller;
 
+import com.pillbox.po.DoctorDiary;
+import com.pillbox.service.DoctorDiaryService;
 import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * User:  maktub
@@ -17,6 +29,17 @@ public class HealthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DoctorDiaryService diaryService;
+
+    @InitBinder
+    protected  void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception{
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        CustomDateEditor dateEditor = new CustomDateEditor(format, true);
+        binder.registerCustomEditor(Date.class, dateEditor);
+    }
+
 
     /**
      * 疾病自诊
@@ -73,8 +96,17 @@ public class HealthController {
      * @return
      */
     @RequestMapping(value = "/toDoctorDiary")
-    public String toDoctorDiary() {
+    public String toDoctorDiary(@RequestParam(required = false) String openId, ModelMap model) {
 
+        openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+
+        List<DoctorDiary> diarys = this.diaryService.selectByOpenId(openId);
+        if (diarys.size() == 0) {
+            return "redirect:/pillBox/health/toDoctorDiaryDetail?openId=" + openId;
+        }
+
+        model.addAttribute("diarys", diarys);
+        model.addAttribute("openId", openId);
         return VIEW_DOCTOR_DIARY;
     }
 
@@ -83,8 +115,14 @@ public class HealthController {
      * @return
      */
     @RequestMapping(value = "/toDoctorDiaryDetail")
-    public String toDoctorDiaryDetail() {
+    public String toDoctorDiaryDetail(@RequestParam String openId,
+                                      @RequestParam(required = false) Long diary_id,
+                                      ModelMap model) {
 
+        DoctorDiary diary = this.diaryService.selectById(diary_id);
+        model.addAttribute("diary", diary == null ? new DoctorDiary() : diary);
+        model.addAttribute("diary_id", diary_id);
+        model.addAttribute("openId", openId);
 
         return VIEW_DOCTOR_DIARY_DETAIL;
     }
@@ -94,9 +132,29 @@ public class HealthController {
      * @return
      */
     @RequestMapping(value = "/updateDoctorDiary")
-    public String updateDoctorDiary() {
+    public String updateDoctorDiary(@RequestParam String openId,
+                                    @RequestParam(required = false) Long diary_id,
+                                    @RequestParam Date appointment_time,
+                                    @RequestParam String doctor_name,
+                                    @RequestParam String remarks,
+                                    @RequestParam(required = false) String is_remind) {
 
-        return "redirect:/pillBox/health/toDoctorDiary";
+        this.diaryService.saveOrUpdate(openId, diary_id, appointment_time, doctor_name, remarks, is_remind);
+        return "redirect:/pillBox/health/toDoctorDiary?openId=" + openId;
+    }
+
+    /**
+     * 删除预约添加
+     * @param openId
+     * @param diary_id
+     * @return
+     */
+    @RequestMapping(value = "/deleteDoctorDiary")
+    public String deleteDoctorDiary(@RequestParam String openId,
+                                    @RequestParam Long diary_id) {
+
+        this.diaryService.delete(diary_id);
+        return "redirect:/pillBox/health/toDoctorDiary?openId=" + openId;
     }
 
     private static final String VIEW_DISEASE_SELF_DIAGNOSIS = "diseaseSelfDiagnosis";
