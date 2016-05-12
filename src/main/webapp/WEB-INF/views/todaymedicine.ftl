@@ -49,14 +49,30 @@
         </div>
 
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-default showActionSheet">
                 <div class="panel-heading">
                     <span style="margin-right: 10px">09:00</span>
-                    <span><small><em>(未服药)</em></small></span>
+                    <span><small><em>(错过)</em></small></span>
                     <span></span>
                 </div>
                 <div class="panel-body">
-                    <span style="margin-right: 20px"><i class="weui_icon_cancel"></i></span>
+                    <span style="margin-right: 20px"><i class="weui_icon_warn"></i></span>
+                    <span style="margin-right: 20px">维他命</span>
+                    <span style="margin-right: 20px">1片</span>
+                    <span style="margin-right: 20px">20剩余剂量</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="panel panel-default showActionSheet">
+                <div class="panel-heading">
+                    <span style="margin-right: 10px">09:00</span>
+                    <span><small><em>(跳过)</em></small></span>
+                    <span></span>
+                </div>
+                <div class="panel-body">
+                    <span style="margin-right: 20px"><i class="weui_icon_info"></i></span>
                     <span style="margin-right: 20px">维他命</span>
                     <span style="margin-right: 20px">1片</span>
                     <span style="margin-right: 20px">20剩余剂量</span>

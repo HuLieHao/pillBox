@@ -38,4 +38,12 @@ public class UserDaoImpl implements UserDao {
         if (list.size() > 0) return list.get(0);
         return null;
     }
+
+    @Override
+    public List<User> selectAll() {
+        Session session = getSession();
+        List<User> list = session.createQuery("from User").list();
+        session.close();
+        return list;
+    }
 }
