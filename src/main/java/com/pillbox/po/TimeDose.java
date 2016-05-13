@@ -19,6 +19,7 @@ public class TimeDose {
     //服用时间 距离00:00的秒数
     public Long time;
 
+    //服用时间 MM:dd
     public String time_str;
 
     //剂量

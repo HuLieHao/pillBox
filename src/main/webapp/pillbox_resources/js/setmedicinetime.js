@@ -22,4 +22,15 @@ $(document).ready(function(){
         $(this).parent(".form-group").find(".control-label").find("small").text("");
     })
 
+    $("select[name=gap]").click(function () {
+
+        var text = $("select[name=gap] option[selected]").val();
+        alert(text);
+        if ("2" == text) {
+
+        }
+    });
+
+
+
 });

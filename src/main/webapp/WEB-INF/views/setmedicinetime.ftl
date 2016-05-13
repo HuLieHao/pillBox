@@ -47,25 +47,31 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-          <label class="control-label">持续时间<small></small></label>
-          <select name="persist" class="form-control input-lg">
-            <option value="1" <#if drug.persist?exists && drug.persist == '1'>selected</#if>>1天</option>
-            <option value="2" <#if drug.persist?exists && drug.persist == '2'>selected</#if>>2天</option>
-            <option value="3" <#if drug.persist?exists && drug.persist == '3'>selected</#if>>3天</option>
-            <option value="4" <#if drug.persist?exists && drug.persist == '4'>selected</#if>>4天</option>
-            <option value="5" <#if drug.persist?exists && drug.persist == '5'>selected</#if>>5天</option>
-            <option value="6" <#if drug.persist?exists && drug.persist == '6'>selected</#if>>6天</option>
-            <option value="7" <#if drug.persist?exists && drug.persist == '7'>selected</#if>>1周</option>
-            <option value="14" <#if drug.persist?exists && drug.persist == '14'>selected</#if>>2周</option>
-            <option value="21" <#if drug.persist?exists && drug.persist == '21'>selected</#if>>3周</option>
-            <option value="30" <#if drug.persist?exists && drug.persist == '30'>selected</#if>>1月</option>
-          </select>
+  <#if !drug.gap?exists || drug.gap == '1'>
+
+      <div class="row">
+          <div class="col-md-12">
+              <div class="form-group">
+                  <label class="control-label">持续时间
+                      <small></small>
+                  </label>
+                  <select name="persist" class="form-control input-lg">
+                      <option value="1" <#if drug.persist?exists && drug.persist == '1'>selected</#if>>1天</option>
+                      <option value="2" <#if drug.persist?exists && drug.persist == '2'>selected</#if>>2天</option>
+                      <option value="3" <#if drug.persist?exists && drug.persist == '3'>selected</#if>>3天</option>
+                      <option value="4" <#if drug.persist?exists && drug.persist == '4'>selected</#if>>4天</option>
+                      <option value="5" <#if drug.persist?exists && drug.persist == '5'>selected</#if>>5天</option>
+                      <option value="6" <#if drug.persist?exists && drug.persist == '6'>selected</#if>>6天</option>
+                      <option value="7" <#if drug.persist?exists && drug.persist == '7'>selected</#if>>1周</option>
+                      <option value="14" <#if drug.persist?exists && drug.persist == '14'>selected</#if>>2周</option>
+                      <option value="21" <#if drug.persist?exists && drug.persist == '21'>selected</#if>>3周</option>
+                      <option value="30" <#if drug.persist?exists && drug.persist == '30'>selected</#if>>1月</option>
+                  </select>
+              </div>
+          </div>
       </div>
-    </div>
-  </div>
+
+  </#if>
 
   <div class="row">
     <div class="col-md-12">

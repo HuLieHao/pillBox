@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * User:  maktub
@@ -50,20 +47,34 @@ public class DrugManagementServiceImpl implements DrugManagementService {
         drug.setUser(user);
         drug.setName(medicineName);
         drug.setSurplus(surplus);
+
         drug.setUnit(unit);
         drug.setUnitStr(DrugManagementDao.Unit.getUnitStr(unit));
+
         drug.setTake_resion(takeResion);
+
         drug.setTake_way(takeWay);
         drug.setTake_way_str(DrugManagementDao.Takeway.getTakewayStr(takeWay));
+
         drug.setDoctor(doctor);
         drug.setAdd_remind(add_remind == null || "".equals(add_remind) ? "0" : "1");
+
         drug.setGap(gap);
         drug.setGapStr(DrugManagementDao.Gap.getGapStr(gap));
+
+        //如果是每日服药
+        if ("1".equals(gap)) {
+
+            drug.setPersist(persist);
+            drug.setPersistStr(DrugManagementDao.Persist.getPersistStr(persist));
+        }
+
         drug.setTimes_dose(timeDoses);
-        drug.setPersist(persist);
-        drug.setPersistStr(DrugManagementDao.Persist.getPersistStr(persist));
+
         drug.setDose_type(dose_type);
         drug.setDose_type_str(DrugManagementDao.DoseType.getDoseTypeStr(dose_type));
+
+        drug.setEndtime(calEndTime(persist));
 
         if (drug.getId() == null) this.drugDao.save(drug);
         else this.drugDao.update(drug);
@@ -87,9 +98,6 @@ public class DrugManagementServiceImpl implements DrugManagementService {
     public void delete(Long drugId) {
         DrugManagement drug = this.drugDao.selectById(drugId);
         if (drug != null) {
-//            for (TimeDose time : drug.getTimes_dose()) {
-//                this.timeDoseDao.delete(time);
-//            }
             this.drugDao.delete(drug);
         }
     }
@@ -102,6 +110,13 @@ public class DrugManagementServiceImpl implements DrugManagementService {
             this.drugDao.update(drug);
         }
         return drug;
+    }
+
+    private Date calEndTime(String days) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, Integer.parseInt(days));
+        return calendar.getTime();
     }
 
     private String formatTime(int dose_time) {

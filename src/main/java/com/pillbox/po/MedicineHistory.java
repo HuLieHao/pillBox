@@ -28,6 +28,9 @@ public class MedicineHistory {
     //服药状态
     public String status;
 
+    //间隔 每日 一次性事件
+    public String gap;
+
     //实际服用数量
     @ManyToOne(targetEntity = TimeDose.class, fetch = FetchType.EAGER)
     public TimeDose timeDose;

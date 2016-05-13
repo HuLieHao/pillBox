@@ -38,6 +38,7 @@ public class DrugManagement {
     //单位
     public String unit;
 
+    //单位字符串
     public String unitStr;
 
     //服用原因
@@ -46,6 +47,7 @@ public class DrugManagement {
     //服用方式
     public String take_way;
 
+    //服用方式字符串
     public String take_way_str;
 
     //医生
@@ -54,6 +56,7 @@ public class DrugManagement {
     //间隔类型 0:每日 1:一次性事件
     public String gap;
 
+    //间隔类型字符串
     public String gapStr;
 
     //服务时间和剂量
@@ -64,15 +67,20 @@ public class DrugManagement {
     //持续时间
     public String persist;
 
+    //持续时间字符串
     public String persistStr;
 
     //服药说明
     public String dose_type;
 
+    //服药说明字符串
     public String dose_type_str;
 
     //是否补充提醒 0: 不提醒 1: 提醒
     public String add_remind;
+
+    //服药截至日期
+    public Date endtime;
 
     //创建时间
     public Date intime = new Date();
@@ -228,5 +236,13 @@ public class DrugManagement {
 
     public void setDose_type_str(String dose_type_str) {
         this.dose_type_str = dose_type_str;
+    }
+
+    public Date getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(Date endtime) {
+        this.endtime = endtime;
     }
 }
