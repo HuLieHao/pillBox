@@ -67,6 +67,9 @@ public class DrugManagementServiceImpl implements DrugManagementService {
 
             drug.setPersist(persist);
             drug.setPersistStr(DrugManagementDao.Persist.getPersistStr(persist));
+        }else {
+            drug.setPersist("");
+            drug.setPersistStr("");
         }
 
         drug.setTimes_dose(timeDoses);

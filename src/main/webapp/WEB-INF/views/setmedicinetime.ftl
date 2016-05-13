@@ -47,9 +47,7 @@
     </div>
   </div>
 
-  <#if !drug.gap?exists || drug.gap == '1'>
-
-      <div class="row">
+      <div class="row" <#if !drug.gap?exists || drug.gap == '1'> style="display: block" <#else >style="display: none"</#if>>
           <div class="col-md-12">
               <div class="form-group">
                   <label class="control-label">持续时间
@@ -71,7 +69,7 @@
           </div>
       </div>
 
-  </#if>
+
 
   <div class="row">
     <div class="col-md-12">

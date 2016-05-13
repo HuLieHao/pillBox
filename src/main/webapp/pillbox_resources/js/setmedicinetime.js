@@ -22,12 +22,13 @@ $(document).ready(function(){
         $(this).parent(".form-group").find(".control-label").find("small").text("");
     })
 
-    $("select[name=gap]").click(function () {
+    $("select[name=gap]").change(function () {
 
-        var text = $("select[name=gap] option[selected]").val();
-        alert(text);
+        var text = $(this).val();
         if ("2" == text) {
-
+            $(".row").eq(2).css("display", "none");
+        }else {
+            $(".row").eq(2).css("display", "block");
         }
     });
 
