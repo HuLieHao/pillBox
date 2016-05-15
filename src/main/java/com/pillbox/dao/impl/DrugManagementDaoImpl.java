@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,6 +62,14 @@ public class DrugManagementDaoImpl implements DrugManagementDao {
     public List<DrugManagement> selectByOpenId(User user) {
         Session session = getSession();
         List<DrugManagement> drugs = session.createQuery("from DrugManagement where user = :user").setParameter("user", user).list();
+        session.close();
+        return drugs;
+    }
+
+    @Override
+    public List<DrugManagement> selecByOpenIdToday(User user) {
+        Session session = getSession();
+        List<DrugManagement> drugs = session.createQuery("from DrugManagement where user = :user and endtime >= :endtime").setParameter("user", user).setParameter("endtime", new Date()).list();
         session.close();
         return drugs;
     }

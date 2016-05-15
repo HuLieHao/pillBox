@@ -1,8 +1,10 @@
 package com.pillbox.service.impl;
 
 import com.pillbox.dao.DrugManagementDao;
+import com.pillbox.dao.MedicineHistoryDao;
 import com.pillbox.dao.TimeDoseDao;
 import com.pillbox.po.DrugManagement;
+import com.pillbox.po.MedicineHistory;
 import com.pillbox.po.TimeDose;
 import com.pillbox.po.User;
 import com.pillbox.service.DrugManagementService;
@@ -11,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -28,6 +34,9 @@ public class DrugManagementServiceImpl implements DrugManagementService {
 
     @Autowired
     private DrugManagementDao drugDao;
+
+    @Autowired
+    private MedicineHistoryDao historyDao;
 
 
     @Override
@@ -64,9 +73,9 @@ public class DrugManagementServiceImpl implements DrugManagementService {
 
         //如果是每日服药
         if ("1".equals(gap)) {
-
             drug.setPersist(persist);
             drug.setPersistStr(DrugManagementDao.Persist.getPersistStr(persist));
+            drug.setEndtime(calEndTime(persist));
         }else {
             drug.setPersist("");
             drug.setPersistStr("");
@@ -77,13 +86,10 @@ public class DrugManagementServiceImpl implements DrugManagementService {
         drug.setDose_type(dose_type);
         drug.setDose_type_str(DrugManagementDao.DoseType.getDoseTypeStr(dose_type));
 
-        drug.setEndtime(calEndTime(persist));
-
         if (drug.getId() == null) this.drugDao.save(drug);
         else this.drugDao.update(drug);
 
         return drug;
-
     }
 
     @Override
@@ -101,6 +107,7 @@ public class DrugManagementServiceImpl implements DrugManagementService {
     public void delete(Long drugId) {
         DrugManagement drug = this.drugDao.selectById(drugId);
         if (drug != null) {
+            this.historyDao.deleteByDrugAndStauts(drug, "2"); //删除已初始化的待服药的数据
             this.drugDao.delete(drug);
         }
     }

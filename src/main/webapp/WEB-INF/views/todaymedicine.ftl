@@ -16,69 +16,34 @@
 
     <div class="row">
 
-        <div class="col-md-12">
-            <div class="panel panel-default showActionSheet">
-                <div class="panel-heading">
-                    <span style="margin-right: 10px">09:00</span>
-                    <span><small><em>(已服药)</em></small></span>
-                    <span></span>
-                </div>
-                <div class="panel-body">
-                    <span style="margin-right: 20px"><i class="weui_icon_success_circle"></i></span>
-                    <span style="margin-right: 20px">维他命</span>
-                    <span style="margin-right: 20px">1片</span>
-                    <span style="margin-right: 20px">20剩余剂量</span>
-                </div>
-            </div>
-        </div>
+        <#list histories as history>
+            <div class="col-md-12">
+                <div class="panel panel-default showActionSheet">
+                    <div class="panel-heading">
+                        <span style="margin-right: 10px">${history.timeDose.time_str!""}</span>
+                        <span><small><em>(${history.statusStr!""})</em></small></span>
+                        <span></span>
+                    </div>
+                    <div class="panel-body">
+                        <span style="margin-right: 20px">
+                            <#if history.status == '1'>
+                                <i class="weui_icon_success_circle"></i>
+                            <#elseif history.status == '2'>
+                                <i class="weui_icon_waiting_circle"></i>
+                            <#elseif history.status == '3'>
+                                <i class="weui_icon_warn"></i>
+                            <#else>
+                                <i class="weui_icon_info"></i>
+                            </#if>
 
-        <div class="col-md-12">
-            <div class="panel panel-default showActionSheet">
-                <div class="panel-heading">
-                    <span style="margin-right: 10px">09:00</span>
-                    <span><small><em>(待服药)</em></small></span>
-                    <span></span>
-                </div>
-                <div class="panel-body">
-                    <span style="margin-right: 20px"><i class="weui_icon_waiting_circle"></i></span>
-                    <span style="margin-right: 20px">维他命</span>
-                    <span style="margin-right: 20px">1片</span>
-                    <span style="margin-right: 20px">20剩余剂量</span>
+                        </span>
+                        <span style="margin-right: 20px">${history.drug.name!""}</span>
+                        <span style="margin-right: 20px">${history.timeDose.num!""}${history.drug.unitStr!""}</span>
+                        <span style="margin-right: 20px">${history.drug.surplus!""}剩余剂量</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel panel-default showActionSheet">
-                <div class="panel-heading">
-                    <span style="margin-right: 10px">09:00</span>
-                    <span><small><em>(错过)</em></small></span>
-                    <span></span>
-                </div>
-                <div class="panel-body">
-                    <span style="margin-right: 20px"><i class="weui_icon_warn"></i></span>
-                    <span style="margin-right: 20px">维他命</span>
-                    <span style="margin-right: 20px">1片</span>
-                    <span style="margin-right: 20px">20剩余剂量</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel panel-default showActionSheet">
-                <div class="panel-heading">
-                    <span style="margin-right: 10px">09:00</span>
-                    <span><small><em>(跳过)</em></small></span>
-                    <span></span>
-                </div>
-                <div class="panel-body">
-                    <span style="margin-right: 20px"><i class="weui_icon_info"></i></span>
-                    <span style="margin-right: 20px">维他命</span>
-                    <span style="margin-right: 20px">1片</span>
-                    <span style="margin-right: 20px">20剩余剂量</span>
-                </div>
-            </div>
-        </div>
+        </#list>
 
   </div>
 

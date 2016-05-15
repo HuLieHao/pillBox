@@ -25,11 +25,11 @@ public class MedicineHistory {
     @ManyToOne(targetEntity = DrugManagement.class, fetch = FetchType.EAGER)
     public DrugManagement drug;
 
-    //服药状态
+    //服药状态 1:已服药 2:待服药 3:错过 4:跳过
     public String status;
 
-    //间隔 每日 一次性事件
-    public String gap;
+    //服药状态字符串
+    public String statusStr;
 
     //实际服用数量
     @ManyToOne(targetEntity = TimeDose.class, fetch = FetchType.EAGER)
@@ -38,4 +38,59 @@ public class MedicineHistory {
     //创建时间
     public Date intime = new Date();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public DrugManagement getDrug() {
+        return drug;
+    }
+
+    public void setDrug(DrugManagement drug) {
+        this.drug = drug;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public TimeDose getTimeDose() {
+        return timeDose;
+    }
+
+    public void setTimeDose(TimeDose timeDose) {
+        this.timeDose = timeDose;
+    }
+
+    public Date getIntime() {
+        return intime;
+    }
+
+    public void setIntime(Date intime) {
+        this.intime = intime;
+    }
+
+    public String getStatusStr() {
+        return statusStr;
+    }
+
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
+    }
 }

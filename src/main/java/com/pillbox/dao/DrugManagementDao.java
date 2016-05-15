@@ -21,6 +21,8 @@ public interface DrugManagementDao {
 
     List<DrugManagement> selectByOpenId(User user);
 
+    List<DrugManagement> selecByOpenIdToday(User user);
+
     DrugManagement selectById(Long id);
 
     //单位

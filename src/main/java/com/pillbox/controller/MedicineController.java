@@ -1,7 +1,9 @@
 package com.pillbox.controller;
 
 import com.pillbox.po.DrugManagement;
+import com.pillbox.po.MedicineHistory;
 import com.pillbox.service.DrugManagementService;
+import com.pillbox.service.MedicineHistoryService;
 import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class MedicineController {
 
     @Autowired
     private DrugManagementService drugManagementService;
+
+    @Autowired
+    private MedicineHistoryService historyService;
 
 
     @RequestMapping("/index")
@@ -192,6 +197,22 @@ public class MedicineController {
     }
 
     /**
+     * 当时提醒
+     * @return
+     */
+    @RequestMapping(value = "/toDayMedicine")
+    public String todayMedicine(@RequestParam(required = false) String openId, ModelMap model) {
+
+        openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+
+        List<MedicineHistory> histories = this.historyService.selectByUserGreaterDate(openId);
+        model.addAttribute("histories", histories);
+        model.addAttribute("openId", openId);
+
+        return VIEW_TODAY_MEDICINE;
+    }
+
+    /**
      * 历史记录
      * @return
      */
@@ -202,15 +223,6 @@ public class MedicineController {
 
     }
 
-    /**
-     * 当时提醒
-     * @return
-     */
-    @RequestMapping(value = "/toDayMedicine")
-    public String todayMedicine() {
-
-        return VIEW_TODAY_MEDICINE;
-    }
 
     private static final String VIEW_MY_MEDICINE = "mymedicine";
 

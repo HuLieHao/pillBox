@@ -1,7 +1,18 @@
 package com.pillbox.service.impl;
 
+import com.pillbox.dao.MedicineHistoryDao;
+import com.pillbox.dao.UserDao;
+import com.pillbox.po.MedicineHistory;
+import com.pillbox.po.User;
 import com.pillbox.service.MedicineHistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * User:  maktub
@@ -9,4 +20,24 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MedicineHistoryServiceImpl implements MedicineHistoryService {
+
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private MedicineHistoryDao historyDao;
+
+    @Override
+    public List<MedicineHistory> selectByUserGreaterDate(String openId) {
+
+        User user = this.userDao.selectByOpenId(openId);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = format.parse(format.format(new Date()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return this.historyDao.selectByUserGreaterDate(user, date);
+    }
 }
