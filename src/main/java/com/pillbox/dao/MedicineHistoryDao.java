@@ -26,10 +26,26 @@ public interface MedicineHistoryDao {
      */
     MedicineHistory selectById(Long id);
 
+    /**
+     * 通过user查询出服药历史记录
+     * @param user
+     * @return
+     */
     List<MedicineHistory> selectByUser(User user);
 
+    /**
+     * 通过user与当天日期查询出当天的服药历史记录
+     * @param user
+     * @param date
+     * @return
+     */
     List<MedicineHistory> selectByUserGreaterDate(User user, Date date);
 
+    /**
+     * 删除服药历史记录
+     * @param drug
+     * @param status
+     */
     void deleteByDrugAndStauts(DrugManagement drug, String status);
 
     List<MedicineHistory> selectByEndTime(Long time);

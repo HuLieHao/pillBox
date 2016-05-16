@@ -6,12 +6,19 @@ import com.pillbox.service.DrugManagementService;
 import com.pillbox.service.MedicineHistoryService;
 import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +36,13 @@ public class MedicineController {
     @Autowired
     private MedicineHistoryService historyService;
 
+
+    @InitBinder
+    protected  void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception{
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        CustomDateEditor dateEditor = new CustomDateEditor(format, true);
+        binder.registerCustomEditor(Date.class, dateEditor);
+    }
 
     @RequestMapping("/index")
     public String index(ModelMap model) {
@@ -198,7 +212,7 @@ public class MedicineController {
 
         if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
-        List<MedicineHistory> histories = this.historyService.selectByUserGreaterDate(openId);
+        List<MedicineHistory> histories = this.historyService.selectBytoDay(openId);
         model.addAttribute("histories", histories);
         model.addAttribute("openId", openId);
 
@@ -223,7 +237,7 @@ public class MedicineController {
      * @return
      */
     @RequestMapping(value = "/toMedicineHistory")
-    public String medicineHistory(@RequestParam(required = false) String openId) {
+    public String medicineHistory(@RequestParam(required = false) String openId, @RequestParam(required = false) Date startDate) {
 
         if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 

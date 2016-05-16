@@ -28,7 +28,7 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
     private MedicineHistoryDao historyDao;
 
     @Override
-    public List<MedicineHistory> selectByUserGreaterDate(String openId) {
+    public List<MedicineHistory> selectBytoDay(String openId) {
 
         User user = this.userDao.selectByOpenId(openId);
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -47,5 +47,17 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
         history.setStatus(status);
         history.setStatusStr(MedicineHistoryDao.Status.getStatsStr(status));
         this.historyDao.update(history);
+    }
+
+    /**
+     * 查询开始日期到今天的服药历史记录
+     *
+     * @param startDate
+     * @return
+     */
+    @Override
+    public List<MedicineHistory> selectByDates(Date startDate) {
+
+        return null;
     }
 }
