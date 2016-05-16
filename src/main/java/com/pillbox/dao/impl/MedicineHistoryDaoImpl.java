@@ -75,4 +75,12 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
         System.out.println("删除服药历史记录数: " + n);
         session.close();
     }
+
+    @Override
+    public List<MedicineHistory> selectByEndTime(Long time) {
+        Session session = getSession();
+        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where timeDose.time = :time").setParameter("time", time).list();
+        session.close();
+        return histories;
+    }
 }

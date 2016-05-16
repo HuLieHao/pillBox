@@ -79,6 +79,7 @@ public class DrugManagementServiceImpl implements DrugManagementService {
         }else {
             drug.setPersist("");
             drug.setPersistStr("");
+            drug.setEndtime(calEndTime("0")); //一次性事件
         }
 
         drug.setTimes_dose(timeDoses);

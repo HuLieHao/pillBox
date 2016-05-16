@@ -11,6 +11,13 @@ $(document).ready(function(){
             .addClass('weui_fade_toggle').one('click', function () {
                 hideActionSheet(weuiActionsheet, mask);
             });
+
+        $(".menu_item").one('click', function () {
+            event.stopPropagation();
+
+            hideActionSheet(weuiActionsheet, mask);
+        });
+
         $('#actionsheet_cancel').one('click', function () {
             hideActionSheet(weuiActionsheet, mask);
         });

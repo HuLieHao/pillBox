@@ -1,6 +1,7 @@
 package com.pillbox.controller;
 
 import com.pillbox.service.WxService;
+import com.pillbox.utils.WeiXinUtil;
 import com.pillbox.utils.WxSignUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,7 +63,8 @@ public class WxController {
     @RequestMapping("/toMyMedicineMenu")
     public String toMyMedicineMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/medicine/toMyMedicine";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
     }
 
     /**
@@ -74,7 +76,8 @@ public class WxController {
     @RequestMapping("/toMedicineHistoryMenu")
     public String toMedicineHistoryMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/medicine/toMedicineHistory";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/medicine/toMedicineHistory?openId=" +openId;
     }
 
     /**
@@ -86,7 +89,8 @@ public class WxController {
     @RequestMapping("/toTodayMedicineMenu")
     public String toTodayMedicineMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/medicine/toDayMedicine";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/medicine/toDayMedicine?openId=" + openId;
     }
 
     /**
@@ -98,7 +102,8 @@ public class WxController {
     @RequestMapping("/toHealthKnowledgeMenu")
     public String toHealthKnowledgeMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toHealthKnowledge";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/health/toHealthKnowledge?openId=" + openId;
     }
 
     /**
@@ -110,7 +115,8 @@ public class WxController {
     @RequestMapping("/toDiseaseSelfDiagnosisMenu")
     public String toDiseaseSelfDiagnosisMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/health/toDiseaseSelfDiagnosis?openId=" + openId;
     }
 
     /**
@@ -122,7 +128,8 @@ public class WxController {
     @RequestMapping("/toRapidFirstAidMenu")
     public String toRapidFirstAidMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toRapidFirstAid";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/health/toRapidFirstAid?openId=" + openId;
     }
 
     /**
@@ -134,7 +141,8 @@ public class WxController {
     @RequestMapping("/toDoctorDiaryMenu")
     public String toDoctorDiaryMenu(@RequestParam String code, @RequestParam String state) {
 
-        return "redirect:/pillBox/health/toDoctorDiary";
+        String openId = WeiXinUtil.getOpenId(code);
+        return "redirect:/pillBox/health/toDoctorDiary?openId=" + openId;
     }
 
     /**

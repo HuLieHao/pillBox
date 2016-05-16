@@ -25,6 +25,8 @@ public interface MedicineHistoryDao {
 
     void deleteByDrugAndStauts(DrugManagement drug, String status);
 
+    List<MedicineHistory> selectByEndTime(Long time);
+
     enum Status {
 
         HAVE_MEDICINE("1", "已服药"),

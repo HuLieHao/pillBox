@@ -98,7 +98,7 @@ public class HealthController {
     @RequestMapping(value = "/toDoctorDiary")
     public String toDoctorDiary(@RequestParam(required = false) String openId, ModelMap model) {
 
-        openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
         List<DoctorDiary> diarys = this.diaryService.selectByOpenId(openId);
         if (diarys.size() == 0) {

@@ -31,12 +31,15 @@ public class MedicineHistory {
     //服药状态字符串
     public String statusStr;
 
-    //实际服用数量
+    //服用数量
     @ManyToOne(targetEntity = TimeDose.class, fetch = FetchType.EAGER)
     public TimeDose timeDose;
 
     //创建时间
     public Date intime = new Date();
+
+    //是否已扫描 0: 未扫描 1: 已扫描
+    public String isScan = "0";
 
     public Long getId() {
         return id;
@@ -92,5 +95,13 @@ public class MedicineHistory {
 
     public void setStatusStr(String statusStr) {
         this.statusStr = statusStr;
+    }
+
+    public String getIsScan() {
+        return isScan;
+    }
+
+    public void setIsScan(String isScan) {
+        this.isScan = isScan;
     }
 }

@@ -52,9 +52,9 @@
         <div class="weui_mask_transition" id="mask"></div>
         <div class="weui_actionsheet" id="weui_actionsheet">
             <div class="weui_actionsheet_menu">
-                <div class="weui_actionsheet_cell">服用</div>
-                <div class="weui_actionsheet_cell">错过</div>
-                <div class="weui_actionsheet_cell">跳过</div>
+                <div class="weui_actionsheet_cell menu_item" status="1">服用</div>
+                <div class="weui_actionsheet_cell menu_item" status="2">错过</div>
+                <div class="weui_actionsheet_cell menu_item" status="3">跳过</div>
             </div>
             <div class="weui_actionsheet_action">
                 <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
