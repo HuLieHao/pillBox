@@ -51,6 +51,21 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
         session.close();
     }
 
+    /**
+     * 通过ID查询服药历史记录
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public MedicineHistory selectById(Long id) {
+        Session session = getSession();
+        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where id = :id").setParameter("id", id).list();
+        session.close();
+        if (histories.size() > 0) return histories.get(0);
+        return null;
+    }
+
     @Override
     public List<MedicineHistory> selectByUser(User user) {
         Session session = getSession();

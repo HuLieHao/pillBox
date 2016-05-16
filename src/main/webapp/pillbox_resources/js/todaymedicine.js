@@ -2,6 +2,9 @@ $(document).ready(function(){
 
     $(".showActionSheet").click(function() {
 
+        var id = $(this).attr("data-id");
+        var openId = $(this).attr("open-id");
+
         var mask = $('#mask');
         var weuiActionsheet = $('#weui_actionsheet');
         weuiActionsheet.addClass('weui_actionsheet_toggle');
@@ -13,7 +16,24 @@ $(document).ready(function(){
             });
 
         $(".menu_item").one('click', function () {
-            event.stopPropagation();
+
+            var index = $(this).index();
+            var status = $(".menu_item").eq(index).attr("status");
+            $('#loadingToast').show();
+            $.ajax({
+                url:"/pillBox/medicine/updateMedicineStatus",
+                type:"post",
+                data:{
+                    id: id,
+                    status: status
+                },
+                success:function(data){
+                    window.location.href="/pillBox/medicine/toDayMedicine?openId=" + openId;
+                },
+                error:function(data){
+                    alert("网络请求失败，请稍候重试");
+                }
+            });
 
             hideActionSheet(weuiActionsheet, mask);
         });
@@ -34,4 +54,6 @@ $(document).ready(function(){
             })
         }
     });
+
+
 });

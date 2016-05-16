@@ -76,7 +76,6 @@ public class TipsTakeMedicine {
 
         boolean isSuccess = WeiXinUtil.sendTipsMedicine(entity);
         System.out.println(isSuccess == true ? "提醒成功..." : "提醒失败...");
-
     }
 
     private Long calTime() {

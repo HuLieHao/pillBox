@@ -40,4 +40,12 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
         }
         return this.historyDao.selectByUserGreaterDate(user, date);
     }
+
+    @Override
+    public void updateMedicineStatus(Long id, String status) {
+        MedicineHistory history = this.historyDao.selectById(id);
+        history.setStatus(status);
+        history.setStatusStr(MedicineHistoryDao.Status.getStatsStr(status));
+        this.historyDao.update(history);
+    }
 }

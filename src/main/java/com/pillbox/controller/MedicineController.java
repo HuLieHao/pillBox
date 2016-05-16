@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -202,6 +203,19 @@ public class MedicineController {
         model.addAttribute("openId", openId);
 
         return VIEW_TODAY_MEDICINE;
+    }
+
+    /**
+     * 更新服药状态
+     * @param id
+     * @param status
+     * @return
+     */
+    @RequestMapping(value = "/updateMedicineStatus")
+    @ResponseBody
+    public String updateMedicineStatus(@RequestParam Long id, @RequestParam String status) {
+        this.historyService.updateMedicineStatus(id, status);
+        return "0";
     }
 
     /**

@@ -18,7 +18,7 @@
 
         <#list histories as history>
             <div class="col-md-12">
-                <div class="panel panel-default showActionSheet">
+                <div class="panel panel-default showActionSheet" data-id="${history.id}" open-id="${openId!""}">
                     <div class="panel-heading">
                         <span style="margin-right: 10px">${history.timeDose.time_str!""}</span>
                         <span><small><em>(${history.statusStr!""})</em></small></span>
@@ -35,7 +35,6 @@
                             <#else>
                                 <i class="weui_icon_info"></i>
                             </#if>
-
                         </span>
                         <span style="margin-right: 20px">${history.drug.name!""}</span>
                         <span style="margin-right: 20px">${history.timeDose.num!""}${history.drug.unitStr!""}</span>
@@ -53,8 +52,8 @@
         <div class="weui_actionsheet" id="weui_actionsheet">
             <div class="weui_actionsheet_menu">
                 <div class="weui_actionsheet_cell menu_item" status="1">服用</div>
-                <div class="weui_actionsheet_cell menu_item" status="2">错过</div>
-                <div class="weui_actionsheet_cell menu_item" status="3">跳过</div>
+                <div class="weui_actionsheet_cell menu_item" status="3">错过</div>
+                <div class="weui_actionsheet_cell menu_item" status="4">跳过</div>
             </div>
             <div class="weui_actionsheet_action">
                 <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>

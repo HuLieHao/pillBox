@@ -11,4 +11,6 @@ import java.util.List;
 public interface MedicineHistoryService {
 
     List<MedicineHistory> selectByUserGreaterDate(String openId);
+
+    void updateMedicineStatus(Long id, String status);
 }

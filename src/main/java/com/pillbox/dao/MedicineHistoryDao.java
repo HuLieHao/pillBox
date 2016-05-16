@@ -19,6 +19,13 @@ public interface MedicineHistoryDao {
 
     void update(MedicineHistory history);
 
+    /**
+     * 通过ID查询服药历史记录
+     * @param id
+     * @return
+     */
+    MedicineHistory selectById(Long id);
+
     List<MedicineHistory> selectByUser(User user);
 
     List<MedicineHistory> selectByUserGreaterDate(User user, Date date);
