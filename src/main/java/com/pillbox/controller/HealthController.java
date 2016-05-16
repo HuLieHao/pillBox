@@ -28,9 +28,6 @@ import java.util.List;
 public class HealthController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private DoctorDiaryService diaryService;
 
     @InitBinder

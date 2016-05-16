@@ -10,10 +10,19 @@ import java.util.List;
  */
 public interface UserDao {
 
-    void save(User user);
+//    void save(User user);
 
+    /**
+     * 通过openId查询出用户
+     * @param openId
+     * @return
+     */
     User selectByOpenId(String openId);
 
+    /**
+     * 查询出全部用户
+     * @return
+     */
     List<User> selectAll();
 
 }

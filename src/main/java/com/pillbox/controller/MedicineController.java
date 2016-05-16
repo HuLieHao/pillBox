@@ -23,9 +23,6 @@ import java.util.List;
 public class MedicineController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private DrugManagementService drugManagementService;
 
     @Autowired
@@ -34,11 +31,6 @@ public class MedicineController {
 
     @RequestMapping("/index")
     public String index(ModelMap model) {
-
-
-//        User user = new User();
-//        user.setOpen_id("123141");
-//        this.userService.save(user);
 
         model.addAttribute("message", "你好");
         return "hello";

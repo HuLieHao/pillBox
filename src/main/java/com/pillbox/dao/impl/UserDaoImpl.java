@@ -23,20 +23,29 @@ public class UserDaoImpl implements UserDao {
         return this.sessionFactory.openSession();
     }
 
-    @Override
-    public void save(User user) {
-        Session session = getSession();
-        session.save(user);
-        session.close();
-    }
+//    @Override
+//    public void save(User user) {
+//        Session session = getSession();
+//        session.save(user);
+//        session.close();
+//    }
 
     @Override
     public User selectByOpenId(String openId) {
         Session session = getSession();
         List<User> list = session.createQuery("from User where open_id = :openId").setParameter("openId", openId).list();
-        session.close();
-        if (list.size() > 0) return list.get(0);
-        return null;
+        if (list.size() > 0) {
+            session.close();
+            return list.get(0);
+        }else {
+
+            User user = new User();
+            user.setOpen_id(openId);
+            session.save(user);
+            session.close();
+
+            return user;
+        }
     }
 
     @Override

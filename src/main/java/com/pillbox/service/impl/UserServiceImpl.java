@@ -18,10 +18,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @Override
-    public void save(User user) {
-        this.userDao.save(user);
-    }
+//    @Override
+//    public void save(User user) {
+//        this.userDao.save(user);
+//    }
 
     @Override
     public User selectByOpenId(String openId) {

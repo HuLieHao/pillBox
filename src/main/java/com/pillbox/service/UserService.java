@@ -8,7 +8,7 @@ import com.pillbox.po.User;
  */
 public interface UserService {
 
-    void save(User user);
+//    void save(User user);
 
     User selectByOpenId(String openId);
 }
