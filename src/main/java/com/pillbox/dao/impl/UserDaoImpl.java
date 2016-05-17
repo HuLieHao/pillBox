@@ -34,16 +34,16 @@ public class UserDaoImpl implements UserDao {
     public User selectByOpenId(String openId) {
         Session session = getSession();
         List<User> list = session.createQuery("from User where open_id = :openId").setParameter("openId", openId).list();
+        System.out.println("查询openId:" + openId + " size: " + list.size());
         if (list.size() > 0) {
             session.close();
             return list.get(0);
         }else {
-
+            System.out.println("未查询到此openId，执行插入操作");
             User user = new User();
             user.setOpen_id(openId);
             session.save(user);
             session.close();
-
             return user;
         }
     }
