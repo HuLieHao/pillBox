@@ -86,7 +86,7 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
     @Override
     public void deleteByDrugAndStauts(DrugManagement drug, String status) {
         Session session = getSession();
-        int n = session.createQuery("delete from DrugManagement where drug = :drug and status = :status").setParameter("drug", drug).setParameter("status", status).executeUpdate();
+        int n = session.createQuery("delete from MedicineHistory where drug = :drug and status = :status").setParameter("drug", drug).setParameter("status", status).executeUpdate();
         System.out.println("删除服药历史记录数: " + n);
         session.close();
     }
