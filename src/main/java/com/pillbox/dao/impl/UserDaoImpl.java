@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Date:   16/4/4 下午11:51
  */
 @Repository
+@Transactional
 public class UserDaoImpl implements UserDao {
 
     @Autowired
@@ -26,11 +28,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(User user) {
         Session session = getSession();
-//        session.save(user);
-        session.createQuery("insert into User(open_id, intime) values(:openId, :intime)")
-                .setParameter("openId", user.getOpen_id())
-                .setParameter("intime",user.getIntime())
-                .executeUpdate();
+        session.saveOrUpdate(user);
+        session.flush();
         session.close();
     }
 
@@ -43,7 +42,6 @@ public class UserDaoImpl implements UserDao {
         if (list.size() > 0) {
             return list.get(0);
         }else {
-            System.out.println("未查询到此openId，执行插入操作");
             User user = new User();
             user.setOpen_id(openId);
             save(user);

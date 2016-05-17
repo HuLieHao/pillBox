@@ -1,7 +1,9 @@
 package com.pillbox.controller;
 
+import com.pillbox.dao.UserDao;
 import com.pillbox.po.DrugManagement;
 import com.pillbox.po.MedicineHistory;
+import com.pillbox.po.User;
 import com.pillbox.service.DrugManagementService;
 import com.pillbox.service.MedicineHistoryService;
 import com.pillbox.service.UserService;
@@ -36,6 +38,9 @@ public class MedicineController {
     @Autowired
     private MedicineHistoryService historyService;
 
+    @Autowired
+    private UserDao userDao;
+
 
     @InitBinder
     protected  void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception{
@@ -47,6 +52,10 @@ public class MedicineController {
     @RequestMapping("/index")
     public String index(ModelMap model) {
 
+
+        User user = new User();
+        user.setOpen_id("3135fdfa13512351");
+        userDao.save(user);
         model.addAttribute("message", "你好");
         return "hello";
     }
