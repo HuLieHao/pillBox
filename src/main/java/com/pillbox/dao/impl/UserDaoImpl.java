@@ -26,7 +26,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(User user) {
         Session session = getSession();
-        session.save(user);
+//        session.save(user);
+        session.createQuery("insert into User(open_id, intime) values(:openId, :intime)")
+                .setParameter("openId", user.getOpen_id())
+                .setParameter("intime",user.getIntime())
+                .executeUpdate();
         session.close();
     }
 
