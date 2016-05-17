@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UserDao {
 
-//    void save(User user);
+    void save(User user);
 
     /**
      * 通过openId查询出用户
