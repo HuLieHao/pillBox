@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "user")
-public class User implements Serializable{
+public class User{
 
     //微信用户唯一标识ID
     @Id
