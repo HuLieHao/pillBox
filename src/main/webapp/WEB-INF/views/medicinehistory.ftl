@@ -26,7 +26,7 @@
               <form class="weui_search_outer" action="/pillBox/medicine/toMedicineHistory" method="post">
                   <div class="weui_search_inner">
                       <i class="weui_icon_search"></i>
-                      <input type="search" name="keywords" class="weui_search_input" id="mirror_field" placeholder="搜索药品" required="" value="${keywords!""}">
+                      <input type="search" name="keywords" class="weui_search_input" id="mirror_field" placeholder="搜索药品" value="${keywords!""}">
                       <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
                   </div>
               </form>

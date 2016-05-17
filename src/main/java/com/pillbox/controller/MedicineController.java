@@ -3,10 +3,8 @@ package com.pillbox.controller;
 import com.pillbox.dao.UserDao;
 import com.pillbox.po.DrugManagement;
 import com.pillbox.po.MedicineHistory;
-import com.pillbox.po.User;
 import com.pillbox.service.DrugManagementService;
 import com.pillbox.service.MedicineHistoryService;
-import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -38,22 +36,12 @@ public class MedicineController {
     @Autowired
     private MedicineHistoryService historyService;
 
-    @Autowired
-    private UserDao userDao;
-
 
     @InitBinder
     protected  void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception{
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         CustomDateEditor dateEditor = new CustomDateEditor(format, true);
         binder.registerCustomEditor(Date.class, dateEditor);
-    }
-
-    @RequestMapping("/index")
-    public String index(ModelMap model) {
-
-        model.addAttribute("message", "你好");
-        return "hello";
     }
 
     /**
