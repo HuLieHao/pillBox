@@ -58,7 +58,7 @@ public class MedicineController {
     @RequestMapping(value = "/toMyMedicine")
     public String myMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
-        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+//        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
         List<DrugManagement> drugs = this.drugManagementService.selectByOpenId(openId);
         if (drugs.size() == 0) {
@@ -210,7 +210,7 @@ public class MedicineController {
     @RequestMapping(value = "/toDayMedicine")
     public String todayMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
-        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+//        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
         List<MedicineHistory> histories = this.historyService.selectBytoDay(openId);
         model.addAttribute("histories", histories);
@@ -239,7 +239,7 @@ public class MedicineController {
     @RequestMapping(value = "/toMedicineHistory")
     public String medicineHistory(@RequestParam(required = false) String openId, @RequestParam(required = false) Date startDate) {
 
-        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+//        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
         return VIEW_MEDICINE_HISTORY;
 

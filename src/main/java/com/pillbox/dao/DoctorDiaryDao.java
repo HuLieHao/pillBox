@@ -3,6 +3,7 @@ package com.pillbox.dao;
 import com.pillbox.po.DoctorDiary;
 import com.pillbox.po.User;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,5 +21,12 @@ public interface DoctorDiaryDao {
     void delete(DoctorDiary diary);
 
     List<DoctorDiary> selectByUser(User user);
+
+    /**
+     * 通过状态查询和日期查询医生的预约日记
+     * @param status
+     * @return
+     */
+    List<DoctorDiary> selectByStatus(String status, Date date);
 
 }

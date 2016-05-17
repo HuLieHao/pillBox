@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,5 +65,10 @@ public class DoctorDiaryDaoImpl implements DoctorDiaryDao {
         List<DoctorDiary> diaryList = session.createQuery("from DoctorDiary where user = :user").setParameter("user", user).list();
         session.close();
         return diaryList;
+    }
+
+    @Override
+    public List<DoctorDiary> selectByStatus(String status, Date date) {
+        return null;
     }
 }

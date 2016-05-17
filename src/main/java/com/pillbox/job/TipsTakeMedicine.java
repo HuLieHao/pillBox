@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 提前10分钟提醒用户服药
  * User:  maktub
  * Date:   16/5/16 上午10:27
  */

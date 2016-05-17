@@ -64,6 +64,7 @@ public class WxController {
     public String toMyMedicineMenu(@RequestParam String code, @RequestParam String state) {
 
         String openId = WeiXinUtil.getOpenId(code);
+        System.out.println("点击了微信菜单 药物管理 时 openId: " + openId);
         return "redirect:/pillBox/medicine/toMyMedicine?openId=" + openId;
     }
 
@@ -77,6 +78,7 @@ public class WxController {
     public String toMedicineHistoryMenu(@RequestParam String code, @RequestParam String state) {
 
         String openId = WeiXinUtil.getOpenId(code);
+        System.out.println("点击了微信菜单 历史记录 时 openId: " + openId);
         return "redirect:/pillBox/medicine/toMedicineHistory?openId=" +openId;
     }
 
@@ -90,6 +92,7 @@ public class WxController {
     public String toTodayMedicineMenu(@RequestParam String code, @RequestParam String state) {
 
         String openId = WeiXinUtil.getOpenId(code);
+        System.out.println("点击了微信菜单 当日提醒 时 openId: " + openId);
         return "redirect:/pillBox/medicine/toDayMedicine?openId=" + openId;
     }
 
