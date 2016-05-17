@@ -27,9 +27,9 @@ public interface MedicineHistoryService {
     void updateMedicineStatus(Long id, String status);
 
     /**
-     * 通过开始日期和结束日期查询服药历史
-     * @param startDate
+     * 通过关健字查询 服药记录
+     * @param keywords
      * @return
      */
-    List<MedicineHistory> selectByDates(Date startDate);
+    List<MedicineHistory> selectByKeywords(String openId, String keywords);
 }

@@ -5,12 +5,14 @@ import com.pillbox.dao.UserDao;
 import com.pillbox.po.MedicineHistory;
 import com.pillbox.po.User;
 import com.pillbox.service.MedicineHistoryService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -50,14 +52,27 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
     }
 
     /**
-     * 查询开始日期到今天的服药历史记录
+     * 通过关健字查询 服药记录
      *
-     * @param startDate
+     * @param keywords
      * @return
      */
     @Override
-    public List<MedicineHistory> selectByDates(Date startDate) {
+    public List<MedicineHistory> selectByKeywords(String openId, String keywords) {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        User user = this.userDao.selectByOpenId(openId);
+        try {
+            if (StringUtils.isEmpty(keywords)) keywords = format.format(new Date());
+            Date startDate = format.parse(keywords);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(Calendar.DAY_OF_MONTH, +1);
+            Date endDate = calendar.getTime();
 
-        return null;
+            return this.historyDao.selectByDate(user,startDate, endDate);
+
+        } catch (ParseException e) {
+            return this.historyDao.selectByDrugName(user, keywords);
+        }
     }
 }

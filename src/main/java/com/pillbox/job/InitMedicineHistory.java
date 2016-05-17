@@ -21,7 +21,7 @@ import java.util.Set;
  * Date:   16/5/13 上午12:35
  */
 @Component
-public class InitMedicineHistory extends BaseJob implements Runnable{
+public class InitMedicineHistory implements Runnable{
 
     @Autowired
     private DrugManagementDao drugDao;

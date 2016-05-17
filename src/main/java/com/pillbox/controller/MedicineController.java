@@ -238,9 +238,13 @@ public class MedicineController {
      * @return
      */
     @RequestMapping(value = "/toMedicineHistory")
-    public String medicineHistory(@RequestParam(required = false) String openId, @RequestParam(required = false) Date startDate) {
+    public String toMedicineHistory(@RequestParam(required = false) String openId, @RequestParam(required = false) String keywords, ModelMap model) {
 
-//        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+
+        List<MedicineHistory> histories = this.historyService.selectByKeywords(openId, keywords);
+        model.addAttribute("histories", histories);
+        model.addAttribute("keywords", keywords);
 
         return VIEW_MEDICINE_HISTORY;
 

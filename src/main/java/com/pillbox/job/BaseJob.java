@@ -10,11 +10,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseJob {
 
-    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 5, 600, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(1000000));
-
-    protected void pushTask(Runnable task) {
-        if (task != null) {
-            threadPoolExecutor.execute(task);
-        }
-    }
+//    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 5, 600, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(1000000));
+//
+//    protected void pushTask(Runnable task) {
+//        if (task != null) {
+//            threadPoolExecutor.execute(task);
+//        }
+//    }
 }

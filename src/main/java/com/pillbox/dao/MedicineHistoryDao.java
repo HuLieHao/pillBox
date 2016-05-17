@@ -48,7 +48,27 @@ public interface MedicineHistoryDao {
      */
     void deleteByDrugAndStauts(DrugManagement drug, String status);
 
+    /**
+     * 查询出当前时间需服药的记录
+     * @param time 扫描时传的分钟数
+     * @return
+     */
     List<MedicineHistory> selectByEndTime(Long time);
+
+    /**
+     * 查询时间介于startDate和endDate的记录
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    List<MedicineHistory> selectByDate(User user, Date startDate, Date endDate);
+
+    /**
+     * 通过药品名查询记录
+     * @param drugName
+     * @return
+     */
+    List<MedicineHistory> selectByDrugName(User user, String drugName);
 
     enum Status {
 

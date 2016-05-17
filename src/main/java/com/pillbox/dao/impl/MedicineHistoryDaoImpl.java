@@ -98,4 +98,34 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
         session.close();
         return histories;
     }
+
+    /**
+     * 查询时间介于startDate和endDate的记录
+     *
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    @Override
+    public List<MedicineHistory> selectByDate(User user, Date startDate, Date endDate) {
+        Session session = getSession();
+        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where user = :user and intime >= :startDate and intime <= :endDate")
+                                                    .setParameter("user", user).setParameter("startDate", startDate).setParameter("endDate", endDate).list();
+        session.close();
+        return histories;
+    }
+
+    /**
+     * 通过药品名查询记录
+     *
+     * @param drugName
+     * @return
+     */
+    @Override
+    public List<MedicineHistory> selectByDrugName(User user, String drugName) {
+        Session session = getSession();
+        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where user = :user and drug.name = :name").setParameter("user", user).setParameter("name", drugName).list();
+        session.close();
+        return histories;
+    }
 }
