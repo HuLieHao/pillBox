@@ -52,10 +52,6 @@ public class MedicineController {
     @RequestMapping("/index")
     public String index(ModelMap model) {
 
-
-        User user = new User();
-        user.setOpen_id("3135fdfa13512351");
-        userDao.save(user);
         model.addAttribute("message", "你好");
         return "hello";
     }
@@ -66,8 +62,6 @@ public class MedicineController {
      */
     @RequestMapping(value = "/toMyMedicine")
     public String myMedicine(@RequestParam(required = false) String openId, ModelMap model) {
-
-//        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
         List<DrugManagement> drugs = this.drugManagementService.selectByOpenId(openId);
         if (drugs.size() == 0) {
@@ -218,8 +212,6 @@ public class MedicineController {
      */
     @RequestMapping(value = "/toDayMedicine")
     public String todayMedicine(@RequestParam(required = false) String openId, ModelMap model) {
-
-//        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
 
         List<MedicineHistory> histories = this.historyService.selectBytoDay(openId);
         model.addAttribute("histories", histories);

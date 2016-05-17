@@ -90,7 +90,26 @@ public class DrugManagementServiceImpl implements DrugManagementService {
         if (drug.getId() == null) this.drugDao.save(drug);
         else this.drugDao.update(drug);
 
+        saveMedicineHistory(timeDoses, drug);
+
         return drug;
+    }
+
+    //当添加新药品时，把当天的服药情况设为待服药
+    private void saveMedicineHistory(Set<TimeDose> doseSet, DrugManagement drug) {
+
+        for (TimeDose dose : doseSet) {
+
+            MedicineHistory history = new MedicineHistory();
+
+            history.setUser(drug.getUser());
+            history.setDrug(drug);
+            history.setStatus("2");
+            history.setStatusStr(MedicineHistoryDao.Status.getStatsStr("2"));
+            history.setTimeDose(dose);
+
+            this.historyDao.save(history);
+        }
     }
 
     @Override
