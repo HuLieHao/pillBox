@@ -38,6 +38,7 @@ public class TipsMedicineDose {
         System.out.println("扫描药品剩余量....");
 
         List<MedicineHistory> historyies = this.medicineHistoryDao.selectBySurplus(5L);
+        System.out.println("size: " + historyies.size());
         for (MedicineHistory history : historyies) {
             pushTempalte(history.getDrug());
         }

@@ -38,6 +38,7 @@ public class TipsTakeMedicine {
         System.out.println("扫描计算时间: " + formatTime(time));
 
         List<MedicineHistory> histories = this.historyDao.selectByEndTime(time);
+        System.out.println("size: " + histories.size());
         for (MedicineHistory history : histories) {
             tipsTakeMedicine(history);
         }
