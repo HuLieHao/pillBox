@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -135,9 +136,16 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
     @Override
     public List<MedicineHistory> selectBySurplus(Long surplus) {
         Session session = getSession();
-        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where intime >= :intime and drug.surplus <= :surplus").setParameter("intime", new Date()).setParameter("surplus", surplus).list();
-        session.close();
-        return histories;
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = format.parse(format.format(new Date()));
+            List<MedicineHistory> histories = session.createQuery("from MedicineHistory where intime >= :intime and drug.surplus <= :surplus").setParameter("intime", date).setParameter("surplus", surplus).list();
+            session.close();
+            return histories;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<MedicineHistory>();
     }
 
     @Override

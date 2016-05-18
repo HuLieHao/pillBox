@@ -78,8 +78,8 @@ public class TipsDoctorDiary {
         remark.put("color", "#173177");
 
         data.put("name", name);
-        data.put("time", time);
-        data.put("dose", remark);
+        data.put("doctor", time);
+        data.put("remark", remark);
 
         map.put("data", data);
 

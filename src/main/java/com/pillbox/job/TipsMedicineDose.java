@@ -63,7 +63,7 @@ public class TipsMedicineDose {
         suplus.put("color", "#173177");
 
         data.put("name", name);
-        data.put("dose", suplus);
+        data.put("suplus", suplus);
 
         map.put("data", data);
 
