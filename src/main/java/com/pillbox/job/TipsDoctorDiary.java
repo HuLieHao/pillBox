@@ -34,7 +34,7 @@ public class TipsDoctorDiary {
      * 每天早上8点提醒当天的医生预约
      */
 //    @Scheduled(cron = "0 0 8 * * *")
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(fixedDelay = 120000)
     public void init() throws ParseException {
 
         System.out.println("扫描医生预约....");
