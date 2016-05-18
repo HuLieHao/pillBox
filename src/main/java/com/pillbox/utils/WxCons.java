@@ -21,7 +21,7 @@ public class WxCons {
 
     public static final String AppSecret = WxParams.getWxAppSecret();
 
-    public static final String TIPS_MEDICINE_TEMPLATE = "LywTxY6X0E0Q6gea7CA6lf-3LPmiKWn8ohSV2Cfh_7U";
+    public static final String TIPS_MEDICINE_TEMPLATE = "d1AFcEYRZ1KXTCGV5AObjnSV9cIRSxoiYeMY0ZKRhYY";
 
 
     public static String access_token = "";

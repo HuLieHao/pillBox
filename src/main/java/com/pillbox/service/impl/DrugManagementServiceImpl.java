@@ -127,7 +127,7 @@ public class DrugManagementServiceImpl implements DrugManagementService {
     public void delete(Long drugId) {
         DrugManagement drug = this.drugDao.selectById(drugId);
         if (drug != null) {
-            this.historyDao.deleteByDrugAndStauts(drug, "2"); //删除已初始化的待服药的数据
+            this.historyDao.deleteByDrug(drug); //删除已初始化的待服药的数据
             this.drugDao.delete(drug);
         }
     }
@@ -157,10 +157,10 @@ public class DrugManagementServiceImpl implements DrugManagementService {
 
     private Set<TimeDose> formatTime(String times_dose_times, DrugManagement drug) {
 
-        if (drug.getTimes_dose().size() > 0) {
-            for (TimeDose time : drug.getTimes_dose()) {
-                this.timeDoseDao.delete(time);
-            }
+
+        if (drug.getId() != null) {
+            //删除当天的服药记录
+            this.historyDao.deleteTodayHistory(drug);
         }
 
         Set<TimeDose> timeDoses = new LinkedHashSet<TimeDose>();

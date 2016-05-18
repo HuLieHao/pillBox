@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -84,9 +87,9 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
     }
 
     @Override
-    public void deleteByDrugAndStauts(DrugManagement drug, String status) {
+    public void deleteByDrug(DrugManagement drug) {
         Session session = getSession();
-        int n = session.createQuery("delete from MedicineHistory where drug = :drug and status = :status").setParameter("drug", drug).setParameter("status", status).executeUpdate();
+        int n = session.createQuery("delete from MedicineHistory where drug = :drug").setParameter("drug", drug).executeUpdate();
         System.out.println("删除服药历史记录数: " + n);
         session.close();
     }
@@ -135,5 +138,18 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
         List<MedicineHistory> histories = session.createQuery("from MedicineHistory where intime >= :intime and drug.surplus <= :surplus").setParameter("intime", new Date()).setParameter("surplus", surplus).list();
         session.close();
         return histories;
+    }
+
+    @Override
+    public void deleteTodayHistory(DrugManagement drug) {
+        Session session = getSession();
+        DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            Date date = format.parse(format.format(new Date()));
+            session.createQuery("delete from MedicineHistory where drug = :drug and intime >= :intime").setParameter("drug", drug).setParameter("intime", date).executeUpdate();
+            session.close();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

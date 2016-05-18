@@ -44,9 +44,8 @@ public interface MedicineHistoryDao {
     /**
      * 删除服药历史记录
      * @param drug
-     * @param status
      */
-    void deleteByDrugAndStauts(DrugManagement drug, String status);
+    void deleteByDrug(DrugManagement drug);
 
     /**
      * 查询出当前时间需服药的记录
@@ -76,6 +75,12 @@ public interface MedicineHistoryDao {
      * @return
      */
     List<MedicineHistory> selectBySurplus(Long surplus);
+
+    /**
+     * 删除当天的服药历史
+     * @param drug
+     */
+    void deleteTodayHistory(DrugManagement drug);
 
     enum Status {
 

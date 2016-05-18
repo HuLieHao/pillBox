@@ -51,7 +51,6 @@ public class InitMedicineHistory implements Runnable{
         for (User user : users) {
             List<DrugManagement> drugs = this.drugDao.selecByOpenIdToday(user);
             dealDrug(drugs);
-//            pushTask(new InitMedicineHistory(drugs));
         }
 
     }

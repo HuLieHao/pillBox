@@ -76,7 +76,7 @@ public class TipsTakeMedicine {
         String entity = JSONObject.toJSONString(map);
 
         boolean isSuccess = WeiXinUtil.sendTipsMedicine(entity);
-        System.out.println(isSuccess == true ? "提醒成功..." : "提醒失败...");
+        System.out.println(isSuccess == true ? "服药 提醒成功..." : "服药 提醒失败...");
     }
 
     private Long calTime() {
