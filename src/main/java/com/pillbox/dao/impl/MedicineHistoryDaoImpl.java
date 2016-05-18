@@ -128,4 +128,12 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
         session.close();
         return histories;
     }
+
+    @Override
+    public List<MedicineHistory> selectBySurplus(Long surplus) {
+        Session session = getSession();
+        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where intime >= :intime and drug.surplus <= :surplus").setParameter("intime", new Date()).setParameter("surplus", surplus).list();
+        session.close();
+        return histories;
+    }
 }

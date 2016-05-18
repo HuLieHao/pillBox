@@ -70,6 +70,13 @@ public interface MedicineHistoryDao {
      */
     List<MedicineHistory> selectByDrugName(User user, String drugName);
 
+    /**
+     * 查询当天剩余药品剂量小球surplus的记录
+     * @param surplus
+     * @return
+     */
+    List<MedicineHistory> selectBySurplus(Long surplus);
+
     enum Status {
 
         HAVE_MEDICINE("1", "已服药"),

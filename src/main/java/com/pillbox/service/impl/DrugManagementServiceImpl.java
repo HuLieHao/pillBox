@@ -55,7 +55,7 @@ public class DrugManagementServiceImpl implements DrugManagementService {
 
         drug.setUser(user);
         drug.setName(medicineName);
-        drug.setSurplus(surplus);
+        drug.setSurplus(Long.parseLong(surplus));
 
         drug.setUnit(unit);
         drug.setUnitStr(DrugManagementDao.Unit.getUnitStr(unit));
@@ -136,7 +136,7 @@ public class DrugManagementServiceImpl implements DrugManagementService {
     public DrugManagement updateSurplus(Long drugId, String surplus) {
         DrugManagement drug = this.drugDao.selectById(drugId);
         if (drug != null) {
-            drug.setSurplus(surplus);
+            drug.setSurplus(Long.parseLong(surplus));
             this.drugDao.update(drug);
         }
         return drug;

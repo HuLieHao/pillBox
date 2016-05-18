@@ -1,6 +1,5 @@
 package com.pillbox.controller;
 
-import com.pillbox.dao.UserDao;
 import com.pillbox.po.DrugManagement;
 import com.pillbox.po.MedicineHistory;
 import com.pillbox.service.DrugManagementService;
@@ -50,6 +49,9 @@ public class MedicineController {
      */
     @RequestMapping(value = "/toMyMedicine")
     public String myMedicine(@RequestParam(required = false) String openId, ModelMap model) {
+
+        //本地调试
+        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
 
         List<DrugManagement> drugs = this.drugManagementService.selectByOpenId(openId);
         if (drugs.size() == 0) {
@@ -103,7 +105,7 @@ public class MedicineController {
             drug = this.drugManagementService.selectById(drugId);
             if (parent == null) {
                 medicineName = drug.getName();
-                surplus = drug.getSurplus();
+                surplus = String.valueOf(drug.getSurplus());
                 unit = drug.getUnit();
                 takeResion = drug.getTake_resion();
                 takeWay = drug.getTake_way();
@@ -201,6 +203,9 @@ public class MedicineController {
     @RequestMapping(value = "/toDayMedicine")
     public String todayMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
+        //本地调试
+        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
+
         List<MedicineHistory> histories = this.historyService.selectBytoDay(openId);
         model.addAttribute("histories", histories);
         model.addAttribute("openId", openId);
@@ -228,7 +233,8 @@ public class MedicineController {
     @RequestMapping(value = "/toMedicineHistory")
     public String toMedicineHistory(@RequestParam(required = false) String openId, @RequestParam(required = false) String keywords, ModelMap model) {
 
-        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+        //本地调试
+        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
 
         List<MedicineHistory> histories = this.historyService.selectByKeywords(openId, keywords);
         model.addAttribute("histories", histories);

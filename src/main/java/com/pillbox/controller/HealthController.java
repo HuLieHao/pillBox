@@ -2,7 +2,6 @@ package com.pillbox.controller;
 
 import com.pillbox.po.DoctorDiary;
 import com.pillbox.service.DoctorDiaryService;
-import com.pillbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -95,7 +94,8 @@ public class HealthController {
     @RequestMapping(value = "/toDoctorDiary")
     public String toDoctorDiary(@RequestParam(required = false) String openId, ModelMap model) {
 
-        if (openId == null) openId = "oQRiyv9PK8asUdaJ7WX88bmpy1ns";
+        //本地调试
+        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
 
         List<DoctorDiary> diarys = this.diaryService.selectByOpenId(openId);
         if (diarys.size() == 0) {

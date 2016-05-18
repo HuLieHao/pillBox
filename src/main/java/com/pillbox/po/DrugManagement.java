@@ -33,7 +33,7 @@ public class DrugManagement {
     public String name;
 
     //剩余量
-    public String surplus;
+    public Long surplus;
 
     //单位
     public String unit;
@@ -110,11 +110,11 @@ public class DrugManagement {
         this.name = name;
     }
 
-    public String getSurplus() {
+    public Long getSurplus() {
         return surplus;
     }
 
-    public void setSurplus(String surplus) {
+    public void setSurplus(Long surplus) {
         this.surplus = surplus;
     }
 

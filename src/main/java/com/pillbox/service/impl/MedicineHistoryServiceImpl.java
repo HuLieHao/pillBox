@@ -1,7 +1,9 @@
 package com.pillbox.service.impl;
 
+import com.pillbox.dao.DrugManagementDao;
 import com.pillbox.dao.MedicineHistoryDao;
 import com.pillbox.dao.UserDao;
+import com.pillbox.po.DrugManagement;
 import com.pillbox.po.MedicineHistory;
 import com.pillbox.po.User;
 import com.pillbox.service.MedicineHistoryService;
@@ -29,6 +31,9 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
     @Autowired
     private MedicineHistoryDao historyDao;
 
+    @Autowired
+    private DrugManagementDao drugDao;
+
     @Override
     public List<MedicineHistory> selectBytoDay(String openId) {
 
@@ -46,6 +51,19 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
     @Override
     public void updateMedicineStatus(Long id, String status) {
         MedicineHistory history = this.historyDao.selectById(id);
+        DrugManagement drug = history.getDrug();
+        if ("1".equals(status)) { //已服药
+            if (!"1".equals(history.getStatus())) {
+                drug.setSurplus(drug.getSurplus() - history.getTimeDose().getNum());
+                this.drugDao.update(drug);
+            }
+        }else { //错过 跳过
+            if ("1".equals(history.getStatus())) {
+                drug.setSurplus(drug.getSurplus() + history.getTimeDose().getNum());
+                this.drugDao.update(drug);
+            }
+        }
+
         history.setStatus(status);
         history.setStatusStr(MedicineHistoryDao.Status.getStatsStr(status));
         this.historyDao.update(history);
