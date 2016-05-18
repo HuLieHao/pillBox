@@ -24,9 +24,9 @@ public interface DoctorDiaryDao {
 
     /**
      * 通过状态查询和日期查询医生的预约日记
-     * @param status
+     * @param
      * @return
      */
-    List<DoctorDiary> selectByStatus(String status, Date date);
+    List<DoctorDiary> selectByStatus(String status, Date startDate, Date endDate);
 
 }

@@ -96,7 +96,7 @@ public class TipsTakeMedicine {
     }
 
     public static void main(String[] args) {
-         TipsTakeMedicine tips = new TipsTakeMedicine();
+        TipsTakeMedicine tips = new TipsTakeMedicine();
         Long time = tips.calTime();
         String str = tips.formatTime(time);
         System.out.println(str);

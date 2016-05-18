@@ -23,6 +23,10 @@ public class WxCons {
 
     public static final String TIPS_MEDICINE_TEMPLATE = "d1AFcEYRZ1KXTCGV5AObjnSV9cIRSxoiYeMY0ZKRhYY";
 
+    public static final String TIPS_MEDICINE_SUPLUS = "BDuMjidBV7cpM6wF2FHV3Kq_wnxDpfg88qULCyJ9RSM";
+
+    public static final String TIPS_DOCTOR_DIARY = "Fpy5c5aPrkcY8r5aRZbVK3NRBlf-SjXAsbEDgjATkqI";
+
 
     public static String access_token = "";
 

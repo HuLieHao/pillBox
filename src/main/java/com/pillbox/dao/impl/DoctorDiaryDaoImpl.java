@@ -68,9 +68,10 @@ public class DoctorDiaryDaoImpl implements DoctorDiaryDao {
     }
 
     @Override
-    public List<DoctorDiary> selectByStatus(String status, Date date) {
+    public List<DoctorDiary> selectByStatus(String status, Date startDate, Date endDate) {
         Session session = getSession();
-        List<DoctorDiary> diaryList = session.createQuery("from DoctorDiary where appointment_time >= :date and is_remind= :status").setParameter("date", date).list();
+        List<DoctorDiary> diaryList = session.createQuery("from DoctorDiary where appointment_time >= :startDate and appointment_time <= :endDate and is_remind= :status")
+                .setParameter("startDate", startDate).setParameter("endDate", endDate).list();
         session.close();
         return diaryList;
     }
