@@ -31,8 +31,8 @@ public class TipsMedicineDose {
      * 每天早上8点提醒药品剩余量
      * 当剩余量少于5时提醒
      */
-//    @Scheduled(cron = "0 0 8 * * *")
-    @Scheduled(fixedDelay = 120000)
+    @Scheduled(cron = "0 0 8 * * *")
+//    @Scheduled(fixedDelay = 120000)
     public void init() {
 
         System.out.println("扫描药品剩余量....");
