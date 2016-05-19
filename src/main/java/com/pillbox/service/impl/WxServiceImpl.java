@@ -95,6 +95,7 @@ public class WxServiceImpl implements WxService {
         article.setTitle("欢迎使用健康管理系统");
         article.setDescription("为您提供服药提醒及健康知识、医生预约日记");
         article.setPicUrl(WxCons.HOST + "/pillbox_resources/images/logo.png");
+        article.setUrl(WxCons.HOST + "/pillBox/health/toIntroduce");
         articleList.add(article);
         // 设置图文消息个数
         newsMessage.setArticleCount(articleList.size());

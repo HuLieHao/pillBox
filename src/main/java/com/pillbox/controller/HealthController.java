@@ -36,6 +36,14 @@ public class HealthController {
         binder.registerCustomEditor(Date.class, dateEditor);
     }
 
+    /**
+     * 进入到介绍页
+     * @return
+     */
+    @RequestMapping("/toIntroduce")
+    public String toIntroduce() {
+        return VIEW_INTRODUCE;
+    }
 
     /**
      * 疾病自诊
@@ -168,4 +176,5 @@ public class HealthController {
 
     private static final String VIEW_DOCTOR_DIARY_DETAIL = "doctordiarydetail";
 
+    private static final String VIEW_INTRODUCE = "introduce";
 }
