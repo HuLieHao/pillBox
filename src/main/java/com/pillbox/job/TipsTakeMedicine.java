@@ -3,6 +3,7 @@ package com.pillbox.job;
 import com.alibaba.fastjson.JSONObject;
 import com.pillbox.dao.MedicineHistoryDao;
 import com.pillbox.po.MedicineHistory;
+import com.pillbox.po.User;
 import com.pillbox.utils.WeiXinUtil;
 import com.pillbox.utils.WxCons;
 import com.pillbox.utils.WxParams;
@@ -11,11 +12,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 提前10分钟提醒用户服药
@@ -37,7 +36,22 @@ public class TipsTakeMedicine {
         Long time = calTime();
         System.out.println("扫描计算时间: " + formatTime(time));
 
-        List<MedicineHistory> histories = this.historyDao.selectByEndTime(time);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = null;
+        Date endDate = null;
+        try {
+
+            startDate = format.parse(format.format(new Date()));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(Calendar.DAY_OF_MONTH, +1);
+            endDate = calendar.getTime();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        List<MedicineHistory> histories = this.historyDao.selectByEndTime(time, startDate, endDate);
         System.out.println("size: " + histories.size());
         for (MedicineHistory history : histories) {
             tipsTakeMedicine(history);

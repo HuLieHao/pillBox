@@ -52,7 +52,7 @@ public interface MedicineHistoryDao {
      * @param time 扫描时传的分钟数
      * @return
      */
-    List<MedicineHistory> selectByEndTime(Long time);
+    List<MedicineHistory> selectByEndTime(Long time, Date startDate, Date endDate);
 
     /**
      * 查询时间介于startDate和endDate的记录

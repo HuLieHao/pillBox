@@ -96,9 +96,10 @@ public class MedicineHistoryDaoImpl implements MedicineHistoryDao {
     }
 
     @Override
-    public List<MedicineHistory> selectByEndTime(Long time) {
+    public List<MedicineHistory> selectByEndTime(Long time, Date startDate, Date endDate) {
         Session session = getSession();
-        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where timeDose.time = :time").setParameter("time", time).list();
+        List<MedicineHistory> histories = session.createQuery("from MedicineHistory where timeDose.time = :time and intime >= :startDate and intime <= :endDate")
+                .setParameter("time", time).setParameter("startDate", startDate).setParameter("endDate", endDate).list();
         session.close();
         return histories;
     }
