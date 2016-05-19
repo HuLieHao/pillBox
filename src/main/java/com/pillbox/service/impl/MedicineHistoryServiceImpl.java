@@ -39,13 +39,20 @@ public class MedicineHistoryServiceImpl implements MedicineHistoryService {
 
         User user = this.userDao.selectByOpenId(openId);
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
+        Date startDate = null;
+        Date endDate = null;
         try {
-            date = format.parse(format.format(new Date()));
+
+            startDate = format.parse(format.format(new Date()));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(Calendar.DAY_OF_MONTH, +1);
+            endDate = calendar.getTime();
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return this.historyDao.selectByUserGreaterDate(user, date);
+        return this.historyDao.selectByDate(user, startDate, endDate);
     }
 
     @Override
