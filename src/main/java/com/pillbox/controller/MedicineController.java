@@ -239,6 +239,7 @@ public class MedicineController {
         List<MedicineHistory> histories = this.historyService.selectByKeywords(openId, keywords);
         model.addAttribute("histories", histories);
         model.addAttribute("keywords", keywords);
+        model.addAttribute("openId", openId);
 
         return VIEW_MEDICINE_HISTORY;
 
