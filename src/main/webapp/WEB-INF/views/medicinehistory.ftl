@@ -27,6 +27,7 @@
                   <div class="weui_search_inner">
                       <i class="weui_icon_search"></i>
                       <input type="search" name="keywords" class="weui_search_input" id="mirror_field" placeholder="搜索药品" value="${keywords!""}">
+                      <input type="hidden" name="openId" value="${openId}">
                       <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
                   </div>
               </form>
@@ -39,7 +40,7 @@
 
     <#list histories as history>
         <div class="col-md-12">
-            <div class="panel panel-default showActionSheet" data-id="${history.id}" open-id="${openId!""}">
+            <div class="panel panel-default showActionSheet" data-id="${history.id}">
                 <div class="panel-heading">
                     <span style="margin-right: 10px">${history.intime?string("yyyy-MM-dd")!""}&nbsp;&nbsp;${history.timeDose.time_str!""}</span>
                     <span><small><em>(${history.statusStr!""})</em></small></span>
