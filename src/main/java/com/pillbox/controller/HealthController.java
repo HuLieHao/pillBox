@@ -103,7 +103,7 @@ public class HealthController {
     public String toDoctorDiary(@RequestParam(required = false) String openId, ModelMap model) {
 
         //本地调试
-        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
+        if (openId == null) openId = "oMzMLw5cr3fl4bOpfnumIyYrAuOw";
 
         List<DoctorDiary> diarys = this.diaryService.selectByOpenId(openId);
         if (diarys.size() == 0) {

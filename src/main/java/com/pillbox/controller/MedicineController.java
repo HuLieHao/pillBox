@@ -51,7 +51,7 @@ public class MedicineController {
     public String myMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
         //本地调试
-        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
+        if (openId == null) openId = "oMzMLw5cr3fl4bOpfnumIyYrAuOw";
 
         List<DrugManagement> drugs = this.drugManagementService.selectByOpenId(openId);
         if (drugs.size() == 0) {
@@ -204,7 +204,7 @@ public class MedicineController {
     public String todayMedicine(@RequestParam(required = false) String openId, ModelMap model) {
 
         //本地调试
-        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
+        if (openId == null) openId = "oMzMLw5cr3fl4bOpfnumIyYrAuOw";
 
         List<MedicineHistory> histories = this.historyService.selectBytoDay(openId);
         model.addAttribute("histories", histories);
@@ -234,7 +234,7 @@ public class MedicineController {
     public String toMedicineHistory(@RequestParam(required = false) String openId, @RequestParam(required = false) String keywords, ModelMap model) {
 
         //本地调试
-        if (openId == null) openId = "oMzMLwxGTYuVZzZNqJdosFvUdW1A";
+        if (openId == null) openId = "oMzMLw5cr3fl4bOpfnumIyYrAuOw";
 
         List<MedicineHistory> histories = this.historyService.selectByKeywords(openId, keywords);
         model.addAttribute("histories", histories);
