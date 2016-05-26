@@ -44,25 +44,25 @@
                             </section>
                         </section>
                         <section>
-                            <h2 class="title">(2)&nbsp;&nbsp;医生日记</h2>
+                            <h2 class="title">(3)&nbsp;&nbsp;医生日记</h2>
                             <section>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;用于对用户所预约过的医生就诊信息进行提醒。用户可以自己选择提醒时间或者是否提醒。</p>
                             </section>
                         </section>
                         <section>
-                            <h2 class="title">(2)&nbsp;&nbsp;疾病自诊</h2>
+                            <h2 class="title">(4)&nbsp;&nbsp;疾病自诊</h2>
                             <section>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;主要用于用户在日常生活中可以对自己的病症进行初步的诊断。病症包含生活中容易出现生病迹象的十大模块：全身症状、皮肤症状、头部、咽喉部、胸部、腹部、骨盆、四肢、腰背部、臀部。</p>
                             </section>
                         </section>
                         <section>
-                            <h2 class="title">(2)&nbsp;&nbsp;快速急救</h2>
+                            <h2 class="title">(5)&nbsp;&nbsp;快速急救</h2>
                             <section>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;主要用于人们面对疾病突发情况的救助。通过浏览查找信息，对简单易处理的疾病进行急救。</p>
                             </section>
                         </section>
                         <section>
-                            <h2 class="title">(2)&nbsp;&nbsp;保健常识</h2>
+                            <h2 class="title">(6)&nbsp;&nbsp;保健常识</h2>
                             <section>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;主要用于平时给人们普及关于身体健康方面的保健知识。通过日常生活中的饮食搭配、健康锻炼，能够使人们远离疾病的干扰。</p>
                             </section>
