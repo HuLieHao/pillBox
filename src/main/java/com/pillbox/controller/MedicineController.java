@@ -103,7 +103,105 @@ public class MedicineController {
         DrugManagement drug = new DrugManagement();
         if (drugId !=null) {
             drug = this.drugManagementService.selectById(drugId);
-            if (parent == null) {
+            if (parent == null || "".equals(parent)) {
+                medicineName = drug.getName();
+                surplus = String.valueOf(drug.getSurplus());
+                unit = drug.getUnit();
+                takeResion = drug.getTake_resion();
+                takeWay = drug.getTake_way();
+                doctor = drug.getDoctor();
+                add_remind = drug.getAdd_remind();
+            }
+        }
+        model.addAttribute("drug", drug);
+
+        model.addAttribute("openId", openId);
+        model.addAttribute("parent", parent);
+        model.addAttribute("medicineName", medicineName);
+        model.addAttribute("surplus", surplus);
+        model.addAttribute("unit", unit);
+        model.addAttribute("takeResion", takeResion);
+        model.addAttribute("takeWay", takeWay);
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("add_remind", add_remind);
+
+        return VIEW_SET_MEDICINE_TIME;
+    }
+
+    /**
+     * 进入到设置服药时间与用量界面
+     * @param drugId
+     * @param openId
+     * @param medicineName
+     * @param surplus
+     * @param unit
+     * @param takeResion
+     * @param takeWay
+     * @param doctor
+     * @param add_remind
+     * @param gap
+     * @param times_dose_times
+     * @param persist
+     * @param dose_type
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/setDoseTime")
+    public String setDoseTime(@RequestParam(required = false) long drugId,
+                              @RequestParam String openId,
+                              @RequestParam(required = false) String parent,
+                              @RequestParam String medicineName,
+                              @RequestParam String surplus,
+                              @RequestParam String unit,
+                              @RequestParam String takeResion,
+                              @RequestParam String takeWay,
+                              @RequestParam String doctor,
+                              @RequestParam(required = false) String add_remind,
+                              @RequestParam String gap,
+                              @RequestParam String times_dose_times,
+                              @RequestParam String persist,
+                              @RequestParam String dose_type, ModelMap model) {
+
+        model.addAttribute("drugId", drugId);
+        model.addAttribute("openId", openId);
+        model.addAttribute("parent", parent);
+        model.addAttribute("medicineName", medicineName);
+        model.addAttribute("surplus", surplus);
+        model.addAttribute("unit", unit);
+        model.addAttribute("takeResion", takeResion);
+        model.addAttribute("takeWay", takeWay);
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("add_remind", add_remind);
+
+        model.addAttribute("gap", gap);
+        model.addAttribute("times_dose_times", times_dose_times);
+        model.addAttribute("persist", persist);
+        model.addAttribute("dose_type", dose_type);
+
+
+        return VIEW_SETDOSETIME;
+    }
+
+    @RequestMapping(value = "/toMedicineTimeBack")
+    public String toMedicineTimeBack(@RequestParam(required = false) Long drugId,
+                                     @RequestParam String openId,
+                                     @RequestParam(required = false) String parent,
+                                     @RequestParam String medicineName,
+                                     @RequestParam String surplus,
+                                     @RequestParam String unit,
+                                     @RequestParam String takeResion,
+                                     @RequestParam String takeWay,
+                                     @RequestParam String doctor,
+                                     @RequestParam(required = false) String add_remind,
+                                     @RequestParam String gap,
+                                     @RequestParam String times_dose_times,
+                                     @RequestParam String persist,
+                                     @RequestParam String dose_type, ModelMap model) {
+
+        DrugManagement drug = new DrugManagement();
+        if (drugId != null) {
+            drug = this.drugManagementService.selectById(drugId);
+            if (parent == null || "".equals(parent)) {
                 medicineName = drug.getName();
                 surplus = String.valueOf(drug.getSurplus());
                 unit = drug.getUnit();
@@ -123,6 +221,11 @@ public class MedicineController {
         model.addAttribute("takeWay", takeWay);
         model.addAttribute("doctor", doctor);
         model.addAttribute("add_remind", add_remind);
+
+        model.addAttribute("gap", gap);
+        model.addAttribute("times_dose_times", times_dose_times);
+        model.addAttribute("persist", persist);
+        model.addAttribute("dose_type", dose_type);
 
         return VIEW_SET_MEDICINE_TIME;
     }
@@ -257,5 +360,7 @@ public class MedicineController {
     private static final String VIEW_TODAY_MEDICINE = "todaymedicine";
 
     private static final String VIEW_PRESCRIPTION = "addprescription";
+
+    private static final String VIEW_SETDOSETIME = "setdosetime";
 
 }

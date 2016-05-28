@@ -33,5 +33,9 @@ $(document).ready(function(){
     });
 
 
+    $("input[name=times_dose_times]").click(function(){
+        $("#setTime").attr("action", "/pillBox/medicine/setDoseTime");
+        $("#setTime").submit();
+    });
 
 });

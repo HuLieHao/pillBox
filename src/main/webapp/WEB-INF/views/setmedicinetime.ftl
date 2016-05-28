@@ -18,6 +18,7 @@
 
       <input type="hidden" name="drugId" value="${drug.id!""}">
       <input type="hidden" name="openId" value="${openId!""}">
+      <input type="hidden" name="parent" value="${parent!""}">
       <input type="hidden" name="medicineName" value="${medicineName!""}">
       <input type="hidden" name="surplus" value="${surplus!""}">
       <input type="hidden" name="unit" value="${unit!""}">
@@ -31,8 +32,13 @@
         <div class="form-group">
           间隔
           <select name="gap" class="form-control input-lg">
-            <option value="1" <#if drug.gap?exists && drug.gap == '1'>selected</#if>>每日</option>
-            <option value="2" <#if drug.gap?exists && drug.gap == '2'>selected</#if>>一次性事件</option>
+              <#if gap?exists>
+                  <option value="1" <#if gap == '1'>selected</#if>>每日</option>
+                  <option value="2" <#if gap == '2'>selected</#if>>一次性事件</option>
+              <#else>
+                  <option value="1" <#if drug.gap?exists && drug.gap == '1'>selected</#if>>每日</option>
+                  <option value="2" <#if drug.gap?exists && drug.gap == '2'>selected</#if>>一次性事件</option>
+              </#if>
           </select>
         </div>
     </div>
@@ -42,7 +48,7 @@
     <div class="col-md-12">
       <div class="form-group">
           <label class="control-label">服药时间(剂量)<small></small></label>
-          <input type="text" name="times_dose_times" class="form-control input-lg" placeholder="服用时间与剂量,如08:30(2);22:00(3)" value="<#if drug.times_dose?exists><#list drug.times_dose as times>${times.time_str!""}(${times.num!""})<#if times_has_next>;</#if></#list></#if>">
+          <input type="text" name="times_dose_times" class="form-control input-lg" placeholder="服用时间与剂量,如08:30(2);22:00(3)" value="<#if times_dose_times?exists>${times_dose_times!""}<#else ><#if drug.times_dose?exists><#list drug.times_dose as times>${times.time_str!""}(${times.num!""})<#if times_has_next>;</#if></#list></#if></#if>">
       </div>
     </div>
   </div>
@@ -54,16 +60,30 @@
                       <small></small>
                   </label>
                   <select name="persist" class="form-control input-lg">
-                      <option value="1" <#if drug.persist?exists && drug.persist == '1'>selected</#if>>1天</option>
-                      <option value="2" <#if drug.persist?exists && drug.persist == '2'>selected</#if>>2天</option>
-                      <option value="3" <#if drug.persist?exists && drug.persist == '3'>selected</#if>>3天</option>
-                      <option value="4" <#if drug.persist?exists && drug.persist == '4'>selected</#if>>4天</option>
-                      <option value="5" <#if drug.persist?exists && drug.persist == '5'>selected</#if>>5天</option>
-                      <option value="6" <#if drug.persist?exists && drug.persist == '6'>selected</#if>>6天</option>
-                      <option value="7" <#if drug.persist?exists && drug.persist == '7'>selected</#if>>1周</option>
-                      <option value="14" <#if drug.persist?exists && drug.persist == '14'>selected</#if>>2周</option>
-                      <option value="21" <#if drug.persist?exists && drug.persist == '21'>selected</#if>>3周</option>
-                      <option value="30" <#if drug.persist?exists && drug.persist == '30'>selected</#if>>1月</option>
+
+                      <#if persist?exists>
+                          <option value="1" <#if persist == '1'>selected</#if>>1天</option>
+                          <option value="2" <#if persist == '2'>selected</#if>>2天</option>
+                          <option value="3" <#if persist == '3'>selected</#if>>3天</option>
+                          <option value="4" <#if persist == '4'>selected</#if>>4天</option>
+                          <option value="5" <#if persist == '5'>selected</#if>>5天</option>
+                          <option value="6" <#if persist == '6'>selected</#if>>6天</option>
+                          <option value="7" <#if persist == '7'>selected</#if>>1周</option>
+                          <option value="14" <#if persist == '14'>selected</#if>>2周</option>
+                          <option value="21" <#if persist == '21'>selected</#if>>3周</option>
+                          <option value="30" <#if persist == '30'>selected</#if>>1月</option>
+                      <#else >
+                          <option value="1" <#if drug.persist?exists && drug.persist == '1'>selected</#if>>1天</option>
+                          <option value="2" <#if drug.persist?exists && drug.persist == '2'>selected</#if>>2天</option>
+                          <option value="3" <#if drug.persist?exists && drug.persist == '3'>selected</#if>>3天</option>
+                          <option value="4" <#if drug.persist?exists && drug.persist == '4'>selected</#if>>4天</option>
+                          <option value="5" <#if drug.persist?exists && drug.persist == '5'>selected</#if>>5天</option>
+                          <option value="6" <#if drug.persist?exists && drug.persist == '6'>selected</#if>>6天</option>
+                          <option value="7" <#if drug.persist?exists && drug.persist == '7'>selected</#if>>1周</option>
+                          <option value="14" <#if drug.persist?exists && drug.persist == '14'>selected</#if>>2周</option>
+                          <option value="21" <#if drug.persist?exists && drug.persist == '21'>selected</#if>>3周</option>
+                          <option value="30" <#if drug.persist?exists && drug.persist == '30'>selected</#if>>1月</option>
+                      </#if>
                   </select>
               </div>
           </div>
@@ -76,10 +96,18 @@
       <div class="form-group">
           <label class="control-label">服用说明<small></small></label>
           <select name="dose_type" class="form-control input-lg">
-            <option value="1" <#if drug.dose_type?exists && drug.dose_type == '1'>selected</#if>>饭前服用</option>
-            <option value="2" <#if drug.dose_type?exists && drug.dose_type == '2'>selected</#if>>与食物一起</option>
-            <option value="3" <#if drug.dose_type?exists && drug.dose_type == '3'>selected</#if>>饭后服用</option>
-            <option value="4" <#if drug.dose_type?exists && drug.dose_type == '4'>selected</#if>>与食物无关</option>
+              <#if dose_type?exists>
+                  <option value="1" <#if dose_type == '1'>selected</#if>>饭前服用</option>
+                  <option value="2" <#if dose_type == '2'>selected</#if>>与食物一起</option>
+                  <option value="3" <#if dose_type == '3'>selected</#if>>饭后服用</option>
+                  <option value="4" <#if dose_type == '4'>selected</#if>>与食物无关</option>
+              <#else>
+                  <option value="1" <#if drug.dose_type?exists && drug.dose_type == '1'>selected</#if>>饭前服用</option>
+                  <option value="2" <#if drug.dose_type?exists && drug.dose_type == '2'>selected</#if>>与食物一起</option>
+                  <option value="3" <#if drug.dose_type?exists && drug.dose_type == '3'>selected</#if>>饭后服用</option>
+                  <option value="4" <#if drug.dose_type?exists && drug.dose_type == '4'>selected</#if>>与食物无关</option>
+              </#if>
+
           </select>
       </div>
     </div>
