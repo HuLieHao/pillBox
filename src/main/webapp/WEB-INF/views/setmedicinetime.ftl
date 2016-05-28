@@ -48,7 +48,7 @@
     <div class="col-md-12">
       <div class="form-group">
           <label class="control-label">服药时间(剂量)<small></small></label>
-          <input type="text" name="times_dose_times" class="form-control input-lg" placeholder="服用时间与剂量,如08:30(2);22:00(3)" value="<#if times_dose_times?exists>${times_dose_times!""}<#else ><#if drug.times_dose?exists><#list drug.times_dose as times>${times.time_str!""}(${times.num!""})<#if times_has_next>;</#if></#list></#if></#if>">
+          <input readonly type="text" name="times_dose_times" class="form-control input-lg" placeholder="服用时间与剂量,如08:30(2);22:00(3)" value="<#if times_dose_times?exists>${times_dose_times!""}<#else ><#if drug.times_dose?exists><#list drug.times_dose as times>${times.time_str!""}(${times.num!""})<#if times_has_next>;</#if></#list></#if></#if>">
       </div>
     </div>
   </div>
