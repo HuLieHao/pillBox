@@ -53,7 +53,21 @@
     </div>
   </div>
 
-      <div class="row" <#if !drug.gap?exists || drug.gap == '1'> style="display: block" <#else >style="display: none"</#if>>
+      <div class="row"
+           <#if gap?exists>
+                <#if gap == '1'>
+                    style="display: block"
+                <#else>
+                    style="display: none"
+                </#if>
+           <#else>
+                <#if drug.gap?exists && drug.gap == '1'>
+                     style="display: block"
+                <#else>
+                     style="display: none"
+                </#if>
+           </#if>
+      >
           <div class="col-md-12">
               <div class="form-group">
                   <label class="control-label">持续时间
