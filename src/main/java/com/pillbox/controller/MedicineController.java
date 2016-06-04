@@ -147,7 +147,7 @@ public class MedicineController {
      * @return
      */
     @RequestMapping(value = "/setDoseTime")
-    public String setDoseTime(@RequestParam(required = false) long drugId,
+    public String setDoseTime(@RequestParam(required = false) Long drugId,
                               @RequestParam String openId,
                               @RequestParam(required = false) String parent,
                               @RequestParam String medicineName,
@@ -158,7 +158,7 @@ public class MedicineController {
                               @RequestParam String doctor,
                               @RequestParam(required = false) String add_remind,
                               @RequestParam String gap,
-                              @RequestParam String times_dose_times,
+                              @RequestParam(required = false) String times_dose_times,
                               @RequestParam String persist,
                               @RequestParam String dose_type, ModelMap model) {
 
